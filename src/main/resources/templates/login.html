@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Diaryログイン</title>
+</head>
+<body>
+<p>ログイン</p>
+
+<span>
+    <form action="/login" method="get">
+        Eメール<br>
+        <input type="email" name = "email" ><br>
+        パスワード 
+        <a href="/">パスワードを忘れた場合</a><br>
+        <input type="password" name="password"><br>
+        <button>ログイン</button>
+    </form>
+</span>
+<span>
+    <form action="/">
+        初めてのご利用ですか？<br>
+        <button>アカウントを作成</button>
+    </form>
+</span>
+</body>
+</html>

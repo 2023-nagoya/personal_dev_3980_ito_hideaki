@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <a th:href="@{/calendar(id=${(previd != null ? previd : 0) - 1})}">前の月</a>
+    <a th:href="@{/calendar(id=${(nextid != null ? nextid : 0) + 1})}">次の月</a>
+    <table border="1">
+        <tr>
+            <th>日</th>
+            <th>月</th>
+            <th>火</th>
+            <th>水</th>
+            <th>木</th>
+            <th>金</th>
+            <th>土</th>
+        </tr>
+        <tr th:each="ppp,ix : ${ calendar }">
+            <th:block th:each="sss,jx : ${ppp}">
+                 <td th:text="${calendar[__${ix.index}__][__${jx.index}__]}"></td>
+            </th:block>
+        </tr>
+    </table>
+</body>
+</html>

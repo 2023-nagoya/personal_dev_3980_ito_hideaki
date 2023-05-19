@@ -16,6 +16,10 @@ public class CalendarController {
 			Model model) {
 		//実行時の日付/時刻情報を持つカレンダーインスタンス作成(ex 2021/01/08 22:00:00)
 		Calendar cal = Calendar.getInstance();
+		int month = cal.get(Calendar.MONTH) + 1;
+		if(id != null) {
+			cal.set(month, id+1);
+		}
 		//インタンスの持つ日付情報を1日に変更(ex 2021/01/01 22:00:00)
 		cal.set(Calendar.DATE, 1);
 		if(id != null) {
@@ -52,6 +56,7 @@ public class CalendarController {
 			model.addAttribute("previd",id != null ? id:null);
 			model.addAttribute("nextid",id != null ? id:null);
 			model.addAttribute("calendar", calendar);
+			model.addAttribute("month",month);
 		}
 		return "calendar";
 	}

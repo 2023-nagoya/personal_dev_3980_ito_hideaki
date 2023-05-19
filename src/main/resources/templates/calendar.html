@@ -5,6 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	[[${month}]]月<br>
     <a th:href="@{/calendar(id=${(previd != null ? previd : 0) - 1})}">前の月</a>
     <a th:href="@{/calendar(id=${(nextid != null ? nextid : 0) + 1})}">次の月</a>
     <table border="1">
@@ -17,9 +18,14 @@
             <th>金</th>
             <th>土</th>
         </tr>
-        <tr th:each="ppp,ix : ${ calendar }">
-            <th:block th:each="sss,jx : ${ppp}">
-                 <td th:text="${calendar[__${ix.index}__][__${jx.index}__]}"></td>
+        <tr th:each="week : ${ calendar }">
+            <th:block th:each="day : ${week}">
+                 <td>
+					<span>[[${day}]]</span><br>
+                    <th:block th:if="${day !=null && day != ""}">
+                        <button>日記を作成</button>
+                    </th:block> 
+				 </td>
             </th:block>
         </tr>
     </table>

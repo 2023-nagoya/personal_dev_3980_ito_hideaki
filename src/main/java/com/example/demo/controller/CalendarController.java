@@ -16,6 +16,7 @@ public class CalendarController {
 			Model model) {
 		//実行時の日付/時刻情報を持つカレンダーインスタンス作成(ex 2021/01/08 22:00:00)
 		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR) ;
 		int month = cal.get(Calendar.MONTH) + 1;
 		if(id != null) {
 			cal.set(month, id+1);
@@ -33,7 +34,9 @@ public class CalendarController {
 		int beforeBlank = cal.get(Calendar.DAY_OF_WEEK) - 1; //1
 		//その月が何日まであるかは以下のメソッドで求められる(1月は31日)
 		int daysCount = cal.getActualMaximum(Calendar.DAY_OF_MONTH); //31
-
+		
+		boolean bflg = true;
+		
 		String calendar[][] = new String[6][7];
 		int day = 1;
 		for (int calendarRow_i = 0; calendarRow_i < 6; calendarRow_i++) {
@@ -48,15 +51,26 @@ public class CalendarController {
 					calendar[calendarRow_i][calendarWeek_i] = String.valueOf(day);
 					day += 1;
 					daysCount = daysCount - 1;
+					if(calendarRow_i == 5 && calendar[calendarRow_i][calendarWeek_i] != null) {
+						bflg = false;
+					}
 					System.out.println(calendar[calendarRow_i][calendarWeek_i]);
 				}
 
 			}
-			
+			if(bflg) {
+				String [][] checkDay =new String[5][7];
+				for(int i = 0;i < 5;i ++) {
+					checkDay[i] = calendar[i];
+				}
+				model.addAttribute("calendar",checkDay);
+			}else {
+				model.addAttribute("calendar", calendar);
+			}
 			model.addAttribute("previd",id != null ? id:null);
 			model.addAttribute("nextid",id != null ? id:null);
-			model.addAttribute("calendar", calendar);
 			model.addAttribute("month",month);
+			model.addAttribute("year",year);
 		}
 		return "calendar";
 	}

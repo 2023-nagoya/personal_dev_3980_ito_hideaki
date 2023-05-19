@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import java.sql.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,9 +16,11 @@ public class Diaries {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-
-	private String user_id;
-	private Date now_date;
+	
+	@Column(name = "user_id")
+	private String userId;
+	@Column(name = "now_date")
+	private Date nowDate;
 	private String title;
 	private String content;
 
@@ -25,13 +28,10 @@ public class Diaries {
 		return id;
 	}
 
-	public String getUser_id() {
-		return user_id;
+	public String getUserId() {
+		return userId;
 	}
 
-	public Date getNow_date() {
-		return now_date;
-	}
 
 	public String getTitle() {
 		return title;
@@ -40,5 +40,18 @@ public class Diaries {
 	public String getContent() {
 		return content;
 	}
+
+	public Diaries(Date nowDate, String title, String content) {
+		this.nowDate = nowDate;
+		this.title = title;
+		this.content = content;
+	}
+
+	public Date getNowDate() {
+		// TODO 自動生成されたメソッド・スタブ
+		return nowDate;
+	}
+	
+	
 
 }

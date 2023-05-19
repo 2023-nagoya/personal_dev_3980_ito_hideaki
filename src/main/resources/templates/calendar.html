@@ -22,8 +22,13 @@
             <th:block th:each="day : ${week}">
                  <td>
 					<span>[[${day}]]</span><br>
-                    <th:block th:if="${day !=null && day != ""}">
-                        <button>日記を作成</button>
+                    <th:block th:if="${day !=null && day != ''}">
+                         <form action="/diary/add" method ="get">
+							 <input type="hidden" name = "year" th:value="${year}">
+							 <input type="hidden" name = "month" th:value="${month}">
+                             <input type="hidden" name = "day" th:value="${day}">
+                             <button>日記を作成</button>
+                         </form>
                     </th:block> 
 				 </td>
             </th:block>

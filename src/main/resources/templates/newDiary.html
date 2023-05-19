@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	[[${year}]]年[[${month}]]月[[${day}]]日
+    新規作成
+    <form action="/diary/detail" method="post">
+        タイトル<br>
+        <input type="text" name="title"><br>
+        今日は何日？<br>
+        <input type="date" name="now_date"><br>
+        内容を書いてください<br>
+        <textarea name="content"></textarea>
+    </form> 
+</body>
+</html>

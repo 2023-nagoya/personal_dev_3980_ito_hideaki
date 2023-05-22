@@ -1,38 +1,50 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/calendar/styles.css">
 </head>
+
 <body>
-	[[${month}]]月<br>
-    <a th:href="@{/calendar(id=${(previd != null ? previd : 0) - 1})}">前の月</a>
-    <a th:href="@{/calendar(id=${(nextid != null ? nextid : 0) + 1})}">次の月</a>
-    <table border="1">
-        <tr>
-            <th>日</th>
-            <th>月</th>
-            <th>火</th>
-            <th>水</th>
-            <th>木</th>
-            <th>金</th>
-            <th>土</th>
-        </tr>
-        <tr th:each="week : ${ calendar }">
-            <th:block th:each="day : ${week}">
-                 <td>
+	<!--    ユーザテーブルの名前を表示-->
+	<header>
+		<a href="/	logout">ログアウト</a>
+		[[${@account.user.name}]]
+	</header>
+	[[${year}]]年[[${month}]]月<br>
+	<!--    [[${month -1}]]月へ-->
+	<a th:href="@{/calendar(id=${(previd != null ? previd : 0) - 1})}">前の月</a>
+	<a th:href="@{/calendar(id=${(nextid != null ? nextid : 0) + 1})}">次の月</a>
+	<!--       [[${month +1}]]月へ-->
+	<table border="1">
+		<tr>
+			<th>日</th>
+			<th>月</th>
+			<th>火</th>
+			<th>水</th>
+			<th>木</th>
+			<th>金</th>
+			<th>土</th>
+		</tr>
+		<tr th:each="week : ${ calendar }">
+			<th:block th:each="day : ${week}">
+				<td>
 					<span>[[${day}]]</span><br>
-                    <th:block th:if="${day !=null && day != ''}">
-                         <form action="/diary/add" method ="get">
-							 <input type="hidden" name = "year" th:value="${year}">
-							 <input type="hidden" name = "month" th:value="${month}">
-                             <input type="hidden" name = "day" th:value="${day}">
-                             <button>日記を作成</button>
-                         </form>
-                    </th:block> 
-				 </td>
-            </th:block>
-        </tr>
-    </table>
+					<th:block th:if="${day !=null && day != ''}">
+						<form action="/diary/detail" method="get">
+							<input type="hidden" name="year" th:value="${year}">
+							<input type="hidden" name="month" th:value="${month}">
+							<input type="hidden" name="day" th:value="${day}">
+							<button>日記を作成</button>
+						</form>
+					</th:block>
+				</td>
+			</th:block>
+		</tr>
+	</table>
+
 </body>
+
 </html>

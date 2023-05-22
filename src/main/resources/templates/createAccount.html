@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>新規登録</title>
+</head>
+
+<body>
+	<header>アカウント新規作成</header>
+	<form action="/create/account" method="post">
+		<table border="1">
+			<tr>
+				<th>名前</th>
+				<td><input type="text" name="name"></td>
+			</tr>
+			<tr>
+				<th>パスワード</th>
+				<td><input type="password" name="password"></td>
+			</tr>
+			<tr>
+				<th>メールアドレス</th>
+				<td><input type="email" name="email"></td>
+			</tr>
+
+		</table>
+		<button>登録</button>
+	</form>
+</body>
+
+</html>

@@ -5,6 +5,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+    <form th:action="'/diary/'+${diary.id}+'/edit'" method="post">
+	<table border="1">
+		<tr>
+			<th>タイトル</th>
+			<td><input type="text" name="title" th:value="${diary.title}"></td>
+		</tr>
+		<tr>
+			<th>内容</th>
+			<td><input type="text" name="content" th:value="${diary.content}"></td>
+		</tr>
+	</table>
+    <button>更新</button>
+</form>
 </body>
 </html>

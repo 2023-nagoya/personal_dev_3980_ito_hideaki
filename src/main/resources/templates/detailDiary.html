@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>投稿編集</title>
+</head>
+
+<body>
+	<header>
+		投稿編集
+		<a href="/logout">ログアウト</a>
+	</header>
+	<table border="1">
+		<tr>
+			<th>タイトル</th>
+			<td>[[${diary.title}]]</td>
+		</tr>
+		<tr>
+			<th>内容</th>
+			<td>[[${diary.content}]]</td>
+		</tr>
+	</table>
+	<form th:action="'/diary/'+${diary.id}+'/edit'" method="get">
+		<input type="submit" value="編集">
+	</form>
+	<form action="/diary/delete" method="get">
+		<input type="submit" value="削除">
+	</form>
+
+</body>
+
+</html>

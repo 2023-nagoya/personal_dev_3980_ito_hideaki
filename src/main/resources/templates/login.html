@@ -8,11 +8,12 @@
 </head>
 <body>
     <header>
-        <h1>My 日記</h1>
+        My 日記
     </header>
     <div>
         <span class="lang lang-jp">
             <h2>ログイン</h2>
+ 			<span th:if = "${error}" th:text="${error}"></span>
             <form action="/login" method="post">
                 Eメール<br>
                 <input type="email" name="email"><br>

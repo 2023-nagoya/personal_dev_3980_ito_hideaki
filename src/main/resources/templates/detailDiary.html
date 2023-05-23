@@ -20,13 +20,19 @@
 			<th>内容</th>
 			<td>[[${diary.content}]]</td>
 		</tr>
+		    <input type="hidden" name="year" th:value=${year}>
+            <input type="hidden" name="month" th:value=${month}>
+            <input type="hidden" name="day" th:value=${day}>
 	</table>
 	<form th:action="'/diary/'+${diary.id}+'/edit'" method="get">
 		<input type="submit" value="編集">
 	</form>
-	<form action="/diary/delete" method="get">
+	<form th:action="'/diary/'+${diary.id}+'/delete'" method="post">
 		<input type="submit" value="削除">
 	</form>
+    <form action="/calendar">
+        <button>戻る</button>
+    </form>
 
 </body>
 

@@ -16,6 +16,8 @@
 			<td><input type="text" name="content" th:value="${diary.content}"></td>
 		</tr>
 	</table>
+    <input type="hidden" name = "nowDate" th:value = "${diary.nowDate}">
+    <input type="hidden" name = "userId" th:value = "${diary.userId}">
     <button>更新</button>
 </form>
 </body>

@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +20,7 @@ public class Diaries {
 	@Column(name = "user_id")
 	private Integer userId;
 	@Column(name = "now_date")
-	private Date nowDate;
+	private LocalDate nowDate;
 	private String title;
 	private String content;
 
@@ -44,18 +44,13 @@ public class Diaries {
 
 	}
 
-	public Diaries(Date nowDate, String title, String content) {
+	public Diaries(Integer userId,LocalDate nowDate, String title, String content) {
 		this.nowDate = nowDate;
 		this.title = title;
 		this.content = content;
+		this.userId = userId;
 	}
 
-	public Diaries(Integer id, Date nowDate, String title, String content) {
-		this.id = id;
-		this.nowDate = nowDate;
-		this.title = title;
-		this.content = content;
-	}
 
 	public Diaries(Integer id, String title, String content) {
 		this.id = id;
@@ -63,26 +58,19 @@ public class Diaries {
 		this.content = content;
 	}
 
-	public Diaries(Integer id, Integer userId, String title, String content) {
-		this.id = id;
-		this.userId=userId;
-		this.title = title;
-		this.content = content;
-		// TODO 自動生成されたコンストラクター・スタブ
-	}
-
-	public Diaries(Integer id, Integer userId, Date nowDate, String title, String content) {
+	public Diaries(Integer id, Integer userId, LocalDate nowDate, String title, String content) {
 		// TODO 自動生成されたコンストラクター・スタブ
 		this.id = id;
-		this.userId=userId;
-		this.nowDate= nowDate;
+		this.userId = userId;
+		this.nowDate = nowDate;
 		this.title = title;
 		this.content = content;
 	}
 
-	public Date getNowDate() {
+	public LocalDate getNowDate() {
 		// TODO 自動生成されたメソッド・スタブ
 		return nowDate;
 	}
+	
 
 }

@@ -20,7 +20,7 @@ public class DiaryController {
 
 	@Autowired
 	DiaryRepository diaryRepository;
-	
+
 	@Autowired
 	Account account;
 
@@ -31,7 +31,7 @@ public class DiaryController {
 			@RequestParam("day") Integer day,
 			Model model) {
 		LocalDate date = LocalDate.of(year, month, day);
-		List<Diaries> diaryList = diaryRepository.findByNowDate(date);
+		List<Diaries> diaryList = diaryRepository.findByNowDateAndUserId(date, account.getUser().getId());
 		boolean existsDiary = !diaryList.isEmpty();
 		if (existsDiary) {
 			model.addAttribute("diary", diaryList.get(0));
@@ -59,13 +59,33 @@ public class DiaryController {
 			@PathVariable(value = "id") Integer id,
 			@RequestParam(value = "title", defaultValue = "") String title,
 			@RequestParam(value = "content", defaultValue = "") String content,
+			@RequestParam(value = "userId", defaultValue = "") Integer userId,
+			@RequestParam(value = "nowDate", defaultValue = "") LocalDate nowDate,
 			Model model) {
-		Diaries	a = diaryRepository.findById(id).get();
-		
-		Diaries diary = new Diaries(id, account.getUser().getId(),a.getNowDate(),title, content);
-		diaryRepository.save(diary);
-
-		return "redirect:/diary/detail";
+		Diaries editDiary = new Diaries(id, userId, nowDate, title, content);
+		diaryRepository.save(editDiary);
+		return "login";
 	}
 
+	@PostMapping("/create/diary")
+	public String create(
+			@RequestParam(value = "title", defaultValue = "") String title,
+			@RequestParam(value = "content", defaultValue = "") String content,
+			@RequestParam("year") Integer year,
+			@RequestParam("month") Integer month,
+			@RequestParam("day") Integer day,
+			Model model) {
+		LocalDate date = LocalDate.of(year, month, day);
+
+		Diaries diary = new Diaries(account.getUser().getId(), date, title, content);
+		diaryRepository.save(diary);
+		return "redirect:/diary/detail?year=" + year + "&month=" + month + "&day=" + day;
+	}
+	@PostMapping("/diary/{id}/delete")
+	public String delete(
+			@PathVariable("id") Integer id,
+			Model model) {
+		diaryRepository.deleteById(id);
+		return "redirect:/calendar";
+	}
 }

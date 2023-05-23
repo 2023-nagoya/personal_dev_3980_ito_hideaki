@@ -10,6 +10,6 @@ import com.example.demo.entity.Diaries;
 
 public interface DiaryRepository extends JpaRepository<Diaries, Integer> {
 
-	List<Diaries> findByNowDate(LocalDate date);
+	List<Diaries> findByNowDateAndUserId(LocalDate date, Integer id);
 	
 }

@@ -5,18 +5,38 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="/css/editDiary.css">
+	<script>
+		function submitForm() {
+			var title = document.getElementById('titleInput').innerText;
+			var content = document.getElementById('contentInput').innerText;
+			document.getElementById('titleHidden').value = title;
+			document.getElementById('contentHidden').value = content;
+			document.getElementById('editForm').submit();
+		}
+	</script>
 </head>
 
 <body>
-	<form th:action="'/diary/'+${diary.id}+'/edit'" method="post">
+	<form th:action="'/diary/'+${diary.id}+'/edit'" method="post" id="editForm">
 		タイトル<br>
-		<input type="text" name="title" th:value="${diary.title}"><br>
+		<div th:contenteditable="true" class="vertical-input" name="title" th:value="${diary.title}" id="titleInput">
+			
+			<p th:text="${diary.title}"></p>
+		</div>
 		内容<br>
-		<textarea name="content" cols="140" rows="25">[[${diary.content}]]</textarea><br>
-        <input type="hidden" name="nowDate" th:value="${diary.nowDate}">
-        <input type="hidden" name="userId" th:value="${diary.userId}">
-        
-        <button>更新</button>
-    </form>
+		<div contenteditable="true" class="vertical-textarea" name="content" th:value="${diary.content}" id="contentInput">
+			
+			<p th:text="${diary.content}"></p>
+		</div>
+
+
+		<input type="hidden" name="nowDate" th:value="${diary.nowDate}">
+		<input type="hidden" name="userId" th:value="${diary.userId}">
+		<input type="hidden" name="title" id="titleHidden">
+		<input type="hidden" name="content" id="contentHidden">
+
+		<button type="button" onclick="submitForm()">更新</button>
+	</form>
 </body>
+
 </html>

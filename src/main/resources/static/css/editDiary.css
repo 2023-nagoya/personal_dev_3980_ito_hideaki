@@ -1,3 +1,8 @@
+body{
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  padding: 30px;
+}
 input{
 	line-height: 22px;
   background: linear-gradient(to bottom, #eee 1px, white 1px);
@@ -10,8 +15,8 @@ input{
 	font-size:120%;
 }
 textarea {
-font-size: 120%;
-line-height: 22px;
+font-size: 100%;
+line-height: 20px;
   background: linear-gradient(to bottom, #eee 1px, white 1px);
   background-size: 100% 20px;
   background-origin: content-box;
@@ -19,4 +24,14 @@ line-height: 22px;
   font-family: serif;
   letter-spacing: 0.05em;
   border: none;
+}
+.vertical-input{
+  writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: vertical-rl;
+}
+.vertical-textarea{
+	writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: vertical-rl;
 }

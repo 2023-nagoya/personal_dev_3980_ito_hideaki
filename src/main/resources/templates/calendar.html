@@ -8,16 +8,13 @@
 </head>
 
 <body>
-	<!--    ユーザテーブルの名前を表示-->
 	<header>
 		<h1>[[${@account.user.name}]]さんの日記</h1>
 		<a href="/logout">ログアウト</a>
 	</header>
 	[[${year}]]年[[${month}]]月<br>
-	<!--    [[${month -1}]]月へ-->
 	<a th:href="@{/calendar(id=${(previd != null ? previd : 0) - 1})}">前の月</a>
 	<a th:href="@{/calendar(id=${(nextid != null ? nextid : 0) + 1})}">次の月</a>
-	<!--       [[${month +1}]]月へ-->
 	<table border="1">
 		<tr>
 			<th>日</th>

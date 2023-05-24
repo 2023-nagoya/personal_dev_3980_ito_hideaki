@@ -4,11 +4,59 @@
 <head>
 	<meta charset="UTF-8">
 	<title>新規登録</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
+
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+		}
+
+		form {
+			margin: 20px auto;
+			width: 300px;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-bottom: 10px;
+		}
+
+		th, td {
+			padding: 8px;
+			border: 1px solid #ccc;
+		}
+
+		button {
+			padding: 10px;
+			background-color: #333;
+			color: #fff;
+			border: none;
+			cursor: pointer;
+		}
+
+		ul {
+			color: red;
+			margin-bottom: 10px;
+		}
+
+		li {
+			margin-bottom: 5px;
+		}
+	</style>
 </head>
 
 <body>
 	<header>アカウント新規作成</header>
-	<ul th:if="${errorMessageList.size() > 0}" th:each ="errorMessage:${errorMessageList}">
+	<ul th:if="${errorMessageList.size() > 0}" th:each="errorMessage:${errorMessageList}">
         <li>[[${errorMessage}]]</li>
     </ul>
 	<form action="/create/account" method="post">

@@ -4,29 +4,40 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<link rel="stylesheet" href="/css/newDiary.css">
 </head>
     
-    <body>
-        <header>
-            新規登録
-            <a href="/logout">ログアウト</a>
-        </header>
-    
-        [[${date}]]<br>
-        <h3>新規作成</h3>
-        <form th:action="@{/create/diary(year=${year},month=${month},day=${day})}" method="post">
-			<input type="hidden" name="year" th:value=${year}>
-            <input type="hidden" name="month" th:value=${month}>
-            <input type="hidden" name="day" th:value=${day}>
-            タイトル<br>　
-            <input type="text" name="title" placeholder="タイトル"><br>
-            本文<br>
-            <textarea name="content" placeholder="本文"></textarea><br>
-            <button>送信</button>
+<body>
+	<header>
+		新規登録
+		<a href="/logout">ログアウト</a>
+	</header>
 
-        </form>
-        <form action="/calendar">
-            <button>戻る</button>
-        </form>
-    </body>
-    
+	[[${date}]]<br>
+	<h3>新規作成</h3>
+	<form th:action="@{/create/diary(year=${year},month=${month},day=${day})}" method="post">
+		<input type="hidden" name="year" th:value=${year}>
+		<input type="hidden" name="month" th:value=${month}>
+		<input type="hidden" name="day" th:value=${day}>
+		タイトル<br>
+		<input type="text" name="title" placeholder="タイトル"><br>
+		本文<br>
+		<textarea name="content" placeholder="本文"></textarea><br>
+		<div class="mood-icons">
+			<input type="radio" id="happy" name="mood" value="happy">
+			<label for="happy">&#x1F603;</label>
+			<input type="radio" id="sad" name="mood" value="sad">
+			<label for="sad">&#x1F622;</label>
+			<input type="radio" id="excited" name="mood" value="excited">
+			<label for="excited">&#x1F929;</label>
+			<input type="radio" id="angry" name="mood" value="angry">
+			<label for="angry">&#x1F620;</label>
+		</div>
+		<button>送信</button>
+	</form>
+	<form action="/calendar">
+		<button>戻る</button>
+	</form>
+</body>
+
+</html>

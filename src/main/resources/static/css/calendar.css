@@ -1,59 +1,75 @@
-   body {
-      background-color: #F6E5D3;
-      font-family: "Hiragino Mincho ProN", serif;
-    }
+body {
+			font-family: "Hiragino Mincho ProN", serif;
+			background-color: #f5f5f5;
+			margin: 0;
+			padding: 0;
+		}
 
-    table {
-      border-collapse: separate;
-      border-spacing: 4px;
-      width: 100%;
-      max-width: 600px;
-      margin: 20px auto;
-      background-color: #F2D8B6;
-      box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-      border: 1px solid #DAA288;
-      border-radius: 8px;
-    }
+		header {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+		}
 
-    th {
-      background-color: #DAA288;
-      color: #FFFFFF;
-      font-weight: normal;
-      padding: 8px;
-      text-align: center;
-      border-bottom: 1px solid #C98C5B;
-    }
+		h1 {
+			margin: 0;
+			font-size: 24px;
+			font-weight: normal;
+			text-align: center;
+			padding-bottom: 10px;
+			border-bottom: 1px solid #ccc;
+		}
 
-    td {
-      padding: 8px;
-      text-align: center;
-      border-bottom: 1px solid #C98C5B;
-    }
+		a {
+			color: #fff;
+			text-decoration: none;
+		}
 
-    td span {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 4px;
-      color: #C98C5B;
-    }
+		a:hover {
+			text-decoration: underline;
+		}
 
-    form {
-      margin-top: 8px;
-    }
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 20px auto;
+			background-color: #f5f5f5;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+			border: 1px solid #ccc;
+		}
 
-    button {
-      padding: 6px 12px;
-      background-color: #E7C3A3;
-      border: none;
-      color: #333333;
-      font-size: 14px;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
+		th, td {
+			padding: 8px;
+			border: 1px solid #ccc;
+			text-align: center;
+			font-size: 16px;
+			color: #333;
+		}
 
-    button:hover {
-      background-color: #CFA782;
-    }
+		th {
+			background-color: #f0f0f0;
+			font-weight: bold;
+		}
+
+		td {
+			background-color: #fff;
+		}
+
+		button {
+			padding: 8px 16px;
+			background-color: #333;
+			color: #fff;
+			border: none;
+			cursor: pointer;
+			font-size: 14px;
+			border-radius: 4px;
+		}
+
+		button:hover {
+			background-color: #555;
+		}
+
+		button:active {
+			background-color: #222;
+		}

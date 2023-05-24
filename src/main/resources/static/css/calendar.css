@@ -1,65 +1,59 @@
-.gnavi{
-    display: flex;
-    flex-wrap: wrap;/*スマホ表示折り返し用なのでPCのみなら不要*/
-    margin:0 0 50px 0;
-    list-style: none;
-}
+   body {
+      background-color: #F6E5D3;
+      font-family: "Hiragino Mincho ProN", serif;
+    }
 
-.gnavi li a{
-    display: block;
-    text-decoration: none;
-    color: #333;
-}
+    table {
+      border-collapse: separate;
+      border-spacing: 4px;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #F2D8B6;
+      box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+      border: 1px solid #DAA288;
+      border-radius: 8px;
+    }
 
-.gnavi li{
-    margin-bottom:20px;
-}
+    th {
+      background-color: #DAA288;
+      color: #FFFFFF;
+      font-weight: normal;
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid #C98C5B;
+    }
 
-/*==================================================
-　5-3-9 テキストが入れ替わる
-===================================*/
+    td {
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid #C98C5B;
+    }
 
+    td span {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 4px;
+      color: #C98C5B;
+    }
 
-.gnavi li a{
-    /*テキストの基点とするためrelativeを指定*/
-  position: relative;
-    /*はみ出る要素を隠す*/
-  overflow: hidden;
-  padding:10px 60px;
-}
+    form {
+      margin-top: 8px;
+    }
 
-.gnavi li span{
-    /*絶対配置でテキストの位置を決める*/
-  position: absolute;
-  left: 50%;
-  top:0;
-    /*アニメーションの指定*/
-  transition: all .5s;
-  transform: translate(-50%, 0);/*X方向に-50% ※中央寄せにするため*/
-  /*ブロック要素にして透過なし、テキスト折り返しなし*/  
-  display: block;
-  opacity:1;
-  white-space: nowrap;
-}
+    button {
+      padding: 6px 12px;
+      background-color: #E7C3A3;
+      border: none;
+      color: #333333;
+      font-size: 14px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
 
-/*差し替わるテキストの設定*/
-.gnavi li span:nth-child(2){
-  opacity:0;/*透過0に*/
-    transform: translate(-50%,100%);/*X方向に-50% Y方向に100%*/
-}
-
-/*hoverするとテキストが入れ替わる設定*/
-.gnavi li:hover span:nth-child(1){
-  opacity:0;/*透過0に*/
-    transform: translate(-50%,-100%);/*X方向に-50% Y方向に-100%*/
-}
-
-.gnavi li:hover span:nth-child(2){
-  opacity:1;/*不透明に*/
-  transform: translate(-50%, 0);/*X方向に-50% Y方向に0*/
-}
-/*========= レイアウトのためのCSS ===============*/
-
-.lead{
-  padding: 50px 20px;
-}
+    button:hover {
+      background-color: #CFA782;
+    }

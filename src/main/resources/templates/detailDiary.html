@@ -4,36 +4,42 @@
 <head>
 	<meta charset="UTF-8">
 	<title>投稿編集</title>
+	<link rel="stylesheet" href="/css/diaryDetail.css">
 </head>
 
 <body>
-	<header>
-		投稿編集
-		<a href="/logout">ログアウト</a>
-	</header>
-	<table border="1">
-		<tr>
-			<th>タイトル</th>
-			<td>[[${diary.title}]]</td>
-		</tr>
-		<tr>
-			<th>内容</th>
-			<td>[[${diary.content}]]</td>
-		</tr>
-		    <input type="hidden" name="year" th:value=${year}>
-            <input type="hidden" name="month" th:value=${month}>
-            <input type="hidden" name="day" th:value=${day}>
-	</table>
+	<div class="note">
+		<h1>題名:
+		[[${diary.title}]]</h1>
+		<p>内容:<br>
+		[[${diary.content}]]</p>
+	</div>
+	
+<!--	<table border="1">-->
+<!--		<tr>-->
+<!--			<th>タイトル</th>-->
+<!--			<td>[[${diary.title}]]</td>-->
+<!--		</tr>-->
+<!--		<tr>-->
+<!--			<th>内容</th>-->
+<!--			<td>[[${diary.content}]]</td>-->
+<!--		</tr>-->
+		<input type="hidden" name="year" th:value=${year}>
+		<input type="hidden" name="month" th:value=${month}>
+		<input type="hidden" name="day" th:value=${day}>
+<!--	</table>-->
+	<div class="button">
 	<form th:action="'/diary/'+${diary.id}+'/edit'" method="get">
-		<input type="submit" value="編集">
+		<button class="distorted-circle1">編集</button>
 	</form>
 	<form th:action="'/diary/'+${diary.id}+'/delete'" method="post">
-		<input type="submit" value="削除">
+		<button class="distorted-circle2">削除</button>
 	</form>
-    <form action="/calendar">
-        <button>戻る</button>
-    </form>
-
+	<form action="/calendar">
+		<button class="distorted-circle3">戻る</button>
+	</form>
+	</div>
+	<a href="/logout">ログアウト</a>
 </body>
 
 </html>

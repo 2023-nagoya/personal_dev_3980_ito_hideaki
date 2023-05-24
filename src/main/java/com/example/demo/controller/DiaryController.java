@@ -64,7 +64,7 @@ public class DiaryController {
 			Model model) {
 		Diaries editDiary = new Diaries(id, userId, nowDate, title, content);
 		diaryRepository.save(editDiary);
-		return "login";
+		return "redirect:/diary/detail?year=" + nowDate.getYear() + "&month=" + nowDate.getMonthValue() + "&day=" + nowDate.getDayOfMonth();
 	}
 
 	@PostMapping("/create/diary")

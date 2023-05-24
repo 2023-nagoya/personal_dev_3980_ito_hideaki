@@ -1,0 +1,22 @@
+input{
+	line-height: 22px;
+  background: linear-gradient(to bottom, #eee 1px, white 1px);
+  background-size: 100% 20px;
+  background-origin: content-box;
+  background-attachment: local;
+  font-family: serif;
+  letter-spacing: 0.05em;
+	border: none;
+	font-size:120%;
+}
+textarea {
+font-size: 120%;
+line-height: 22px;
+  background: linear-gradient(to bottom, #eee 1px, white 1px);
+  background-size: 100% 20px;
+  background-origin: content-box;
+  background-attachment: local;
+  font-family: serif;
+  letter-spacing: 0.05em;
+  border: none;
+}

@@ -6,7 +6,7 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="/css/newDiary.css">
 </head>
-    
+
 <body>
 	<header>
 		新規登録
@@ -23,16 +23,12 @@
 		<input type="text" name="title" placeholder="タイトル"><br>
 		本文<br>
 		<textarea name="content" placeholder="本文"></textarea><br>
-		<div class="mood-icons">
-			<input type="radio" id="happy" name="mood" value="happy">
-			<label for="happy">&#x1F603;</label>
-			<input type="radio" id="sad" name="mood" value="sad">
-			<label for="sad">&#x1F622;</label>
-			<input type="radio" id="excited" name="mood" value="excited">
-			<label for="excited">&#x1F929;</label>
-			<input type="radio" id="angry" name="mood" value="angry">
-			<label for="angry">&#x1F620;</label>
-		</div>
+		本日の気候<br>
+		<input type="text" name="weather" placeholder="タイトル"><br>
+		
+		<input type="checkbox" id="check" name="check">
+		<label for="okiniri">お気に入り</label><br>
+		
 		<button>送信</button>
 	</form>
 	<form action="/calendar">

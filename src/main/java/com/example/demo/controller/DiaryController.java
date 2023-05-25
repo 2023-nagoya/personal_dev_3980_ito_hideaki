@@ -41,6 +41,7 @@ public class DiaryController {
 			model.addAttribute("year", year);
 			model.addAttribute("month", month);
 			model.addAttribute("day", day);
+
 			return "newDiary";
 		}
 	}
@@ -61,10 +62,12 @@ public class DiaryController {
 			@RequestParam(value = "content", defaultValue = "") String content,
 			@RequestParam(value = "userId", defaultValue = "") Integer userId,
 			@RequestParam(value = "nowDate", defaultValue = "") LocalDate nowDate,
+			@RequestParam(value = "weather", defaultValue = "") String weather,
 			Model model) {
-		Diaries editDiary = new Diaries(id, userId, nowDate, title, content);
+		Diaries editDiary = new Diaries(id, userId, nowDate, title, content, weather);
 		diaryRepository.save(editDiary);
-		return "redirect:/diary/detail?year=" + nowDate.getYear() + "&month=" + nowDate.getMonthValue() + "&day=" + nowDate.getDayOfMonth();
+		return "redirect:/diary/detail?year=" + nowDate.getYear() + "&month=" + nowDate.getMonthValue() + "&day="
+				+ nowDate.getDayOfMonth();
 	}
 
 	@PostMapping("/create/diary")
@@ -74,18 +77,29 @@ public class DiaryController {
 			@RequestParam("year") Integer year,
 			@RequestParam("month") Integer month,
 			@RequestParam("day") Integer day,
+			@RequestParam("weather") String weather,
+			@RequestParam(required = false, name="check") String check,
 			Model model) {
-		LocalDate date = LocalDate.of(year, month, day);
 
-		Diaries diary = new Diaries(account.getUser().getId(), date, title, content);
+		boolean favoriteFlg;
+		if (check != null) {
+			favoriteFlg = true;
+		} else {
+			favoriteFlg = false;
+		}
+		LocalDate date = LocalDate.of(year, month, day);
+		Diaries diary = new Diaries(account.getUser().getId(), date, title, content, weather, favoriteFlg);
 		diaryRepository.save(diary);
+
 		return "redirect:/diary/detail?year=" + year + "&month=" + month + "&day=" + day;
 	}
+
 	@PostMapping("/diary/{id}/delete")
 	public String delete(
 			@PathVariable("id") Integer id,
 			Model model) {
 		diaryRepository.deleteById(id);
+
 		return "redirect:/calendar";
 	}
 }

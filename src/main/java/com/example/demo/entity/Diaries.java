@@ -23,9 +23,24 @@ public class Diaries {
 	private LocalDate nowDate;
 	private String title;
 	private String content;
+	private String weather;
+	@Column(name ="favorite_flg")
+	private boolean favoriteFlg;
+	
+	public boolean isFavoriteFlg() {
+		return favoriteFlg;
+	}
+
+	public boolean geta() {
+		return favoriteFlg;
+	}
 
 	public Integer getId() {
 		return id;
+	}
+
+	public String getWeather() {
+		return weather;
 	}
 
 	public Integer getUserId() {
@@ -44,11 +59,13 @@ public class Diaries {
 
 	}
 
-	public Diaries(Integer userId,LocalDate nowDate, String title, String content) {
+	public Diaries(Integer userId,LocalDate nowDate, String title, String content,String weather,boolean favoriteFlg) {
 		this.nowDate = nowDate;
 		this.title = title;
 		this.content = content;
 		this.userId = userId;
+		this.weather = weather;
+		this.favoriteFlg = favoriteFlg;
 	}
 
 
@@ -58,13 +75,14 @@ public class Diaries {
 		this.content = content;
 	}
 
-	public Diaries(Integer id, Integer userId, LocalDate nowDate, String title, String content) {
+	public Diaries(Integer id, Integer userId, LocalDate nowDate, String title, String content,String weather) {
 		// TODO 自動生成されたコンストラクター・スタブ
 		this.id = id;
 		this.userId = userId;
 		this.nowDate = nowDate;
 		this.title = title;
 		this.content = content;
+		this.weather = weather;
 	}
 
 	public LocalDate getNowDate() {

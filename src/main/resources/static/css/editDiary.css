@@ -29,9 +29,30 @@ line-height: 20px;
   writing-mode: vertical-rl;
   -webkit-writing-mode: vertical-rl;
   -ms-writing-mode: vertical-rl;
+  	line-height: 22px;
+  background: linear-gradient(to bottom, #eee 1px, white 1px);
+  background-size: 100% 20px;
+  background-origin: content-box;
+  background-attachment: local;
+  font-family: serif;
+  letter-spacing: 0.05em;
+	border: none;
+	font-size:120%;
+	 text-orientation: upright;
 }
 .vertical-textarea{
 	writing-mode: vertical-rl;
   -webkit-writing-mode: vertical-rl;
   -ms-writing-mode: vertical-rl;
+  font-size: 100%;
+line-height: 20px;
+  background: linear-gradient(to bottom, #eee 1px, white 1px);
+  background-size: 100% 20px;
+  background-origin: content-box;
+  background-attachment: local;
+  font-family: serif;
+  letter-spacing: 0.05em;
+  border: none;
+  width	: 800px;
+   text-orientation: upright;
 }

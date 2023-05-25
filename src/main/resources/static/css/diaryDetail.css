@@ -25,6 +25,7 @@ h1 {
   font-family: 'Noto Serif JP', serif !important;
   font-weight: bold;
   color: #333;
+  text-orientation: upright;
 }
 p{
   -webkit-writing-mode: vertical-rl;
@@ -33,6 +34,7 @@ p{
   font-family: 'Noto Serif JP', serif !important;
   font-weight: bold;
   margin:1em auto;
+  text-orientation: upright;
 }
 p:before{
   content:' ';
@@ -46,6 +48,8 @@ p:before{
   background-position: 50% 80%, 50% 30%, 0% 80%, 100% 80%;
   background-size: 15px 15px, 30px 25px, 30px 25px, 30px 25px;
   background-repeat:no-repeat;
+  
+ 
 }
 
 .distorted-circle1 {

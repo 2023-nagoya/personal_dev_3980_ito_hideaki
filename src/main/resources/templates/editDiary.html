@@ -34,8 +34,10 @@
 		<input type="hidden" name="userId" th:value="${diary.userId}">
 		<input type="hidden" name="title" id="titleHidden">
 		<input type="hidden" name="content" id="contentHidden">
-
 		<button type="button" onclick="submitForm()">更新</button>
+	</form>
+	<form action="diary/detail" method="post" id="editForm">
+		<button>戻る</button>
 	</form>
 </body>
 

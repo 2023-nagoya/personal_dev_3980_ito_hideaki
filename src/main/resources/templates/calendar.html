@@ -12,6 +12,14 @@
 		<h1>[[${@account.user.name}]]さんの日記</h1>
 		<a href="/logout">ログアウト</a>
 	</header>
+	<form action="all/diary" method="post">
+		<input type="hidden" name="year" th:value="${year}">
+		<input type="hidden" name="month" th:value="${month}">
+		<input type="hidden" name="day" th:value="${day}">
+		<button>日記一覧へ</button>
+	</form>
+
+
 	[[${year}]]年[[${month}]]月<br>
 	<a th:href="@{/calendar(id=${(previd != null ? previd : 0) - 1})}">前の月</a>
 	<a th:href="@{/calendar(id=${(nextid != null ? nextid : 0) + 1})}">次の月</a>

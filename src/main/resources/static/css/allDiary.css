@@ -1,0 +1,49 @@
+
+/* CSS code for allDiary.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+     -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  padding: 30px;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+table.detail {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.detail th,
+table.detail td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ccc;
+}
+
+table.detail th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+table.detail tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table.detail tr:hover {
+    background-color: #e6f7ff;
+}
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>日記一覧</title>
+<link rel="stylesheet" href="/css/allDiary.css">
+</head>
+<body>
+	本日の季語<br>
+	[[${kigo.name}]]:[[${kigo.meaning}]]
+    <table class="detail">
+		<tr>
+			<th>日付</th>
+			<th>気候</th>
+			<th>タイトル</th>
+		</tr>
+		<tr th:each="diary:${diaries}">
+			<td th:text="${diary.nowDate}"></td>
+			<td th:text="${diary.weather}"></td>
+			<td><a th:href ="@{/create/diary(year=${year},month=${month},day=${day})}">[[${diary.title}]]</a></td> 
+		</tr>
+	</table>
+	<form action="/calendar">
+		<button>戻る</button>
+	</form>
+
+</body>
+</html>

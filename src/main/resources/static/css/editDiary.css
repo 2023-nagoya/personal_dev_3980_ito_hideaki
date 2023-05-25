@@ -2,6 +2,8 @@ body{
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
   padding: 30px;
+  font-family: "MS Mincho", serif; /* テキストのフォントを明朝体に設定 */
+			background-color: #f2ece6;
 }
 input{
 	line-height: 22px;

@@ -1,51 +1,66 @@
-/* newDiary.css */
 
-body {
-  font-family: 'Hiragino Mincho ProN', serif;
-  background-color: #f6f4ee;
-  color: #4d4d4d;
-  line-height: 1.5;
-  
-}
+body {		  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  padding: 30px;
+			font-family: "MS Mincho", serif; /* テキストのフォントを明朝体に設定 */
+			background-color: #f2ece6; /* 背景色を設定 */
+		}
 
-header {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-}
+		form {
+			text-align: center; /* フォーム内のテキストを中央揃えにする */
+			padding: 20px;
+		}
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+		.vertical-input {
+			border: none;
+			border-bottom: 1px solid #ccc;
+			margin-bottom: 10px;
+			text-align: center; /* テキストを中央揃えにする */
+			width: 300px;
+			height: 30px;
+			display: inline-block;
+			vertical-align: middle;
+			writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: vertical-rl;
+  	line-height: 22px;
+  background: linear-gradient(to bottom, #eee 1px, white 1px);
+  background-size: 100% 20px;
+  background-origin: content-box;
+  background-attachment: local;
+  font-family: serif;
+  letter-spacing: 0.05em;
+	border: none;
+	font-size:120%;
+	 text-orientation: upright;
+	 font-size: 100%;
+		}
 
-h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-input[type="text"],
-textarea {
-  width: 100%;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  margin-bottom: 10px;
-  font-family: 'Hiragino Mincho ProN', serif;
-}
-
-button {
-  padding: 5px 10px;
-  background-color: #333;
-  color: #fff;
+		.vertical-textarea {
+			border: none;
+			border-bottom: 1px solid #ccc;
+			margin-bottom: 10px;
+			text-align: center; /* テキストを中央揃えにする */
+			width: 300px;
+			height: 100px;
+			display: inline-block;
+			vertical-align: middle;
+			writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: vertical-rl;
+  font-size: 100%;
+line-height: 20px;
+  background: linear-gradient(to bottom, #eee 1px, white 1px);
+  background-size: 100% 20px;
+  background-origin: content-box;
+  background-attachment: local;
+  font-family: serif;
+  letter-spacing: 0.05em;
   border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
+  width	: 800px;
+   text-orientation: upright;
+		}
 
-button:hover {
-  background-color: #555;
-}
+		button {
+			margin-top: 10px;
+		}

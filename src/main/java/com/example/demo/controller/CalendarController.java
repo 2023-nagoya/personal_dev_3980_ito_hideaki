@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Diaries;
@@ -56,7 +57,7 @@ public class CalendarController {
 		String calendar[][] = new String[6][7];
 		int day = 1;
 		for (int calendarRow_i = 0; calendarRow_i < 6; calendarRow_i++) {
-			for (int calendarWeek_i = 0; calendarWeek_i < 7; 				calendarWeek_i++) {
+			for (int calendarWeek_i = 0; calendarWeek_i < 7; calendarWeek_i++) {
 				//beforebrankの繰り返し処理
 				if (beforeBlank > 0) {
 					calendar[calendarRow_i][calendarWeek_i] = "";
@@ -64,7 +65,7 @@ public class CalendarController {
 
 					//dayを作ってday=dayscountになるまで繰り返す
 				} else if (daysCount != 0) {
-					calendar[calendarRow_i][calendarWeek_i] = 					String.valueOf(day);
+					calendar[calendarRow_i][calendarWeek_i] = String.valueOf(day);
 					day += 1;
 					daysCount = daysCount - 1;
 					if (calendarRow_i == 5 && calendar[calendarRow_i][calendarWeek_i] != null) {
@@ -83,6 +84,11 @@ public class CalendarController {
 			} else {
 				model.addAttribute("calendar", calendar);
 			}
+			
+//			LocalDate key = LocalDate.of(year, month, day);
+//			Map<LocalDate, List<Diaries>> calendarMap = new HashMap<>();
+//			List<Diaries> value = retrieveValueFromDiaries(currentDate);
+//			calendarMap.put(key, value);
 
 			model.addAttribute("previd", id != null ? id : null);
 			model.addAttribute("nextid", id != null ? id : null);
@@ -95,9 +101,16 @@ public class CalendarController {
 		return "calendar";
 	}
 
-	@GetMapping("all/diary")
-	public String allDiary(
+//	private List<Diaries> retrieveValueFromDiaries(LocalDate currentDate) {
+//		// TODO 自動生成されたメソッド・スタブ
+//		return null;
+//	}
 
+	@PostMapping("all/diary")
+	public String allDiary(
+			@RequestParam("year") Integer year,
+			@RequestParam("month") Integer month,
+			@RequestParam("day") Integer day,
 			Model model) {
 		Random rand = new Random();
 		Integer id = rand.nextInt(20) + 1;
@@ -106,11 +119,15 @@ public class CalendarController {
 		Integer userId = account.getUser().getId();
 		List<Diaries> diaries = diaryRepository.findAllByUserId(userId);
 
+		model.addAttribute("day", day);
+		model.addAttribute("year", year);
+		model.addAttribute("month", month);
 		model.addAttribute("kigo", kigo);
 		model.addAttribute("diaries", diaries);
 
 		return "allDiary";
 
 	}
-
+	
+	
 }

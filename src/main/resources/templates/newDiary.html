@@ -5,6 +5,15 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="/css/newDiary.css">
+	<script>
+		function submitForm() {
+			var title = document.getElementById('titleInput').innerText;
+			var content = document.getElementById('contentInput').innerText;
+			document.getElementById('titleHidden').value = title;
+			document.getElementById('contentHidden').value = content;
+			document.getElementById('editForm').submit();
+		}
+	</script>
 </head>
 
 <body>
@@ -20,15 +29,22 @@
 		<input type="hidden" name="month" th:value=${month}>
 		<input type="hidden" name="day" th:value=${day}>
 		タイトル<br>
-		<input type="text" name="title" placeholder="タイトル"><br>
-		本文<br>
-		<textarea name="content" placeholder="本文"></textarea><br>
+		<div th:contenteditable="true" class="vertical-input" name="title" placeholder="タイトル">
+
+			<p></p>
+		</div>
+		内容<br>
+		<div contenteditable="true" class="vertical-textarea" name="content">
+
+			<p></p>
+		</div>
+
 		本日の気候<br>
-		<input type="text" name="weather" placeholder="タイトル"><br>
-		
+		<input type="text" name="weather" placeholder="天気"><br>
+
 		<input type="checkbox" id="check" name="check">
 		<label for="okiniri">お気に入り</label><br>
-		
+
 		<button>送信</button>
 	</form>
 	<form action="/calendar">

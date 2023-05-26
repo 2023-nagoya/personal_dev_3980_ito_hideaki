@@ -1,0 +1,17 @@
+<span th:text="${holidayMap.get(holiday)}"></span>
+<span th:text="${calendarMap.get(title)}"></span>
+<th:block th:if="${calendarMap.containsKey(title)}">
+	<form action="/diary/edit" method="get">
+		<input type="hidden" name="year" th:value="${year}">
+		<input type="hidden" name="month" th:value="${month}">
+		<input type="hidden" name="day" th:value="${day}">
+		<button>投稿編集</button>
+	</form>
+</th:block>
+<th:block th:unless="${calendarMap.containsKey(title)}">
+	<form action="/diary/detail" method="get">
+		<input type="hidden" name="year" th:value="${year}">
+		<input type="hidden" name="month" th:value="${month}">
+		<input type="hidden" name="day" th:value="${day}">
+		<button>新規作成</button>
+	</form>

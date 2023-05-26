@@ -19,7 +19,6 @@
 		<button>日記一覧へ</button>
 	</form>
 
-
 	[[${year}]]年[[${month}]]月<br>
 	<a th:href="@{/calendar(id=${(previd != null ? previd : 0) - 1})}">前の月</a>
 	<a th:href="@{/calendar(id=${(nextid != null ? nextid : 0) + 1})}">次の月</a>
@@ -36,14 +35,16 @@
 		<tr th:each="week : ${ calendar }">
 			<th:block th:each="day : ${week}">
 				<td>
-					<span>[[${day}]]</span><br>
 					<th:block th:if="${day !=null && day != ''}">
-						<form action="/diary/detail" method="get">
-							<input type="hidden" name="year" th:value="${year}">
-							<input type="hidden" name="month" th:value="${month}">
-							<input type="hidden" name="day" th:value="${day}">
-							<button>日記を作成</button>
-						</form>
+						<span>[[${day}]]</span><br>
+						<th:block th:if="${day} lt ${ten}" th:with="holiday=''+${decimalMonth}+'-0'+${day},title=${year}+ '-'+${decimalMonth}+'-0'+${day}">
+							 <iframe src="addFunction.html"></iframe>
+							</th:block>
+						</th:block>
+						<th:block th:unless="${day} lt ${ten}" th:with="holiday=''+${decimalMonth}+''+${day} ,title=${year}+ '-'+${decimalMonth}+'-'+${day}">
+							<iframe src="addFunction.html"></iframe>
+						</th:block>
+
 					</th:block>
 				</td>
 			</th:block>

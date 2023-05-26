@@ -4,7 +4,7 @@ INSERT INTO users(name, password, email) VALUES('鈴木一郎', 'himitu', 'abc@d
 INSERT INTO diaries(user_id, now_date, title, content,weather,favorite_flg) VALUES('1', '2023-05-17', 'sample', 'sample','晴れ','true');
 INSERT INTO diaries(user_id, now_date, title, content,weather,favorite_flg) VALUES('2', '2023-05-18', 'sample', 'sample','曇り','false');
 INSERT INTO diaries(user_id, now_date, title, content,weather,favorite_flg) VALUES('3', '2023-05-19', 'sample', 'sample', '雨','false');
-
+-- 季語データ
 INSERT INTO Kigo(name, meaning) VALUES('雨注ぎ', '雨だれ、雨のしずく');
 INSERT INTO Kigo(name, meaning) VALUES('雨間', '雨の一時やんでいる間');
 INSERT INTO Kigo(name, meaning) VALUES('零雨', '静かに降る雨');
@@ -25,3 +25,22 @@ INSERT INTO Kigo(name, meaning) VALUES('雪夜', '雪の降る夜、雪が積も
 INSERT INTO Kigo(name, meaning) VALUES('深雪', '深く積もった雪');
 INSERT INTO Kigo(name, meaning) VALUES('雪消', '雪がとけて消えること');
 INSERT INTO Kigo(name, meaning) VALUES('斑雪', 'うっすらと降った雪');
+
+-- 祝日データ
+INSERT INTO holiday(name,now_date) VALUES('元日', '0101');
+INSERT INTO holiday(name,now_date) VALUES('成人の日', '0109');
+INSERT INTO holiday(name,now_date) VALUES('建国記念の日', '0211');
+INSERT INTO holiday(name,now_date) VALUES('天皇誕生日', '0223');
+INSERT INTO holiday(name,now_date) VALUES('春分の日', '0321');
+INSERT INTO holiday(name,now_date) VALUES('昭和の日', '0429');
+INSERT INTO holiday(name,now_date) VALUES('憲法記念日', '0503');
+INSERT INTO holiday(name,now_date) VALUES('みどりの日', '0504');
+INSERT INTO holiday(name,now_date) VALUES('こどもの日', '0505');
+INSERT INTO holiday(name,now_date) VALUES('海の日', '0717');
+INSERT INTO holiday(name,now_date) VALUES('山の日', '0811');
+INSERT INTO holiday(name,now_date) VALUES('敬老の日', '0918');
+INSERT INTO holiday(name,now_date) VALUES('秋分の日', '0923');
+INSERT INTO holiday(name,now_date) VALUES('スポーツの日', '1009');
+INSERT INTO holiday(name,now_date) VALUES('文化の日', '1103');
+INSERT INTO holiday(name,now_date) VALUES('勤労感謝の日', '1123');
+

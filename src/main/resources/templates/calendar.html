@@ -38,11 +38,44 @@
 					<th:block th:if="${day !=null && day != ''}">
 						<span>[[${day}]]</span><br>
 						<th:block th:if="${day} lt ${ten}" th:with="holiday=''+${decimalMonth}+'-0'+${day},title=${year}+ '-'+${decimalMonth}+'-0'+${day}">
-							 <iframe src="addFunction.html"></iframe>
+							<span th:text="${holidayMap.get(holiday)}"></span>
+							<span th:text="${calendarMap.get(title)}"></span>
+							<th:block th:if="${calendarMap.containsKey(title)}">
+								<form action="/diary/detail" method="get">
+									<input type="hidden" name="year" th:value="${year}">
+									<input type="hidden" name="month" th:value="${month}">
+									<input type="hidden" name="day" th:value="${day}">
+									<button>投稿編集</button>
+								</form>
+							</th:block>
+							<th:block th:unless="${calendarMap.containsKey(title)}">
+								<form action="/diary/detail" method="get">
+									<input type="hidden" name="year" th:value="${year}">
+									<input type="hidden" name="month" th:value="${month}">
+									<input type="hidden" name="day" th:value="${day}">
+									<button>新規作成</button>
+								</form>
 							</th:block>
 						</th:block>
 						<th:block th:unless="${day} lt ${ten}" th:with="holiday=''+${decimalMonth}+''+${day} ,title=${year}+ '-'+${decimalMonth}+'-'+${day}">
-							<iframe src="addFunction.html"></iframe>
+							<span th:text="${holidayMap.get(holiday)}"></span>
+							<span th:text="${calendarMap.get(title)}"></span>
+							<th:block th:if="${calendarMap.containsKey(title)}">
+								<form action="/diary/detail" method="get">
+									<input type="hidden" name="year" th:value="${year}">
+									<input type="hidden" name="month" th:value="${month}">
+									<input type="hidden" name="day" th:value="${day}">
+									<button>投稿編集</button>
+								</form>
+							</th:block>
+							<th:block th:unless="${calendarMap.containsKey(title)}">
+								<form action="/diary/detail" method="get">
+									<input type="hidden" name="year" th:value="${year}">
+									<input type="hidden" name="month" th:value="${month}">
+									<input type="hidden" name="day" th:value="${day}">
+									<button>新規作成</button>
+								</form>
+							</th:block>
 						</th:block>
 
 					</th:block>

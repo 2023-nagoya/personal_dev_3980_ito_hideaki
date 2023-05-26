@@ -2,7 +2,7 @@
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS diaries;
 DROP TABLE IF EXISTS Kigo;
-
+DROP TABLE IF EXISTS holiday;
 
 -- ユーザテーブル
 CREATE TABLE users
@@ -30,5 +30,13 @@ CREATE TABLE Kigo
    name TEXT,
    meaning TEXT
 );
+CREATE TABLE holiday
+(
+   id SERIAL PRIMARY KEY,
+   name TEXT,
+   meaning TEXT,
+   now_date TEXT
+);
+
 
 

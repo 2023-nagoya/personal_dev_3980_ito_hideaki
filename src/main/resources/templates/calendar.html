@@ -10,16 +10,25 @@
 <body>
 	<header>
 		<h1>[[${@account.user.name}]]さんの日記</h1>
-		<a href="/logout">ログアウト</a>
 	</header>
+	<div class="link">
+	<a href="/logout" class="logout">ログアウト</a>
+	<!--	日記知覧へ飛ぶ-->
 	<form action="all/diary" method="post">
 		<input type="hidden" name="year" th:value="${year}">
 		<input type="hidden" name="month" th:value="${month}">
 		<input type="hidden" name="day" th:value="${day}">
 		<button>日記一覧へ</button>
 	</form>
-
-	[[${year}]]年[[${month}]]月<br>
+	</div>
+	<span class="today">[[${year}]]年[[${month}]]月</span>
+	
+	
+	<span th:with="hoge = ${decimalMonth}">
+		<span th:text="${monthMap.get(hoge)}"></span>
+	</span>
+	
+	
 	<a th:href="@{/calendar(id=${(previd != null ? previd : 0) - 1})}">前の月</a>
 	<a th:href="@{/calendar(id=${(nextid != null ? nextid : 0) + 1})}">次の月</a>
 	<table border="1">
@@ -37,20 +46,59 @@
 				<td>
 					<th:block th:if="${day !=null && day != ''}">
 						<span>[[${day}]]</span><br>
-						<th:block th:if="${day} lt ${ten}" th:with="holiday=''+${decimalMonth}+'-0'+${day},title=${year}+ '-'+${decimalMonth}+'-0'+${day}">
-							 <iframe src="addFunction.html"></iframe>
+						
+<!--					/日付が10日より小さいとき-->
+						<th:block th:if="${day} lt ${ten}"
+							th:with="holiday=${decimalMonth}+'0'+${day},title=${year}+ '-'+${decimalMonth}+'-0'+${day}">
+							<span th:text="${holidayMap.get(holiday)}"　style="color: blue"></span>
+							<span th:text="${calendarMap.get(title)}"></span>
+							<th:block th:if="${calendarMap.containsKey(title)}">
+								<form action="/diary/detail" method="get">
+									<input type="hidden" name="year" th:value="${year}">
+									<input type="hidden" name="month" th:value="${month}">
+									<input type="hidden" name="day" th:value="${day}">
+									<button class="buttonEdit">投稿編集</button>
+								</form>
+							</th:block>
+							<th:block th:unless="${calendarMap.containsKey(title)}">
+								<form action="/diary/detail" method="get">
+									<input type="hidden" name="year" th:value="${year}">
+									<input type="hidden" name="month" th:value="${month}">
+									<input type="hidden" name="day" th:value="${day}">
+									<button class="buttonNew">新規作成</button>
+								</form>
 							</th:block>
 						</th:block>
-						<th:block th:unless="${day} lt ${ten}" th:with="holiday=''+${decimalMonth}+''+${day} ,title=${year}+ '-'+${decimalMonth}+'-'+${day}">
-							<iframe src="addFunction.html"></iframe>
+			
+<!--						日付が10以上のとき-->
+						<th:block th:unless="${day} lt ${ten}"
+							th:with="holiday=${decimalMonth}+''+${day} ,title=${year}+ '-'+${decimalMonth}+'-'+${day}">
+							<span th:text="${holidayMap.get(holiday)}"　style="color: blue"></span>
+							<span th:text="${calendarMap.get(title)}"></span>
+							<th:block th:if="${calendarMap.containsKey(title)}">
+								<form action="/diary/detail" method="get">
+									<input type="hidden" name="year" th:value="${year}">
+									<input type="hidden" name="month" th:value="${month}">
+									<input type="hidden" name="day" th:value="${day}">
+									<button class="buttonEdit">投稿編集</button>
+								</form>
+							</th:block>
+							<th:block th:unless="${calendarMap.containsKey(title)}">
+								<form action="/diary/detail" method="get">
+									<input type="hidden" name="year" th:value="${year}">
+									<input type="hidden" name="month" th:value="${month}">
+									<input type="hidden" name="day" th:value="${day}">
+									<button class="buttonNew">新規作成</button>
+								</form>
+							</th:block>
 						</th:block>
-
+			
+			
 					</th:block>
 				</td>
 			</th:block>
 		</tr>
 	</table>
-
 </body>
 
 </html>

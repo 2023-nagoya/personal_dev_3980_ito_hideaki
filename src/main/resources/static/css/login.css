@@ -1,9 +1,12 @@
 header{
+	background-image: url("https://img.freepik.com/free-photo/beige-concrete-textured-background_53876-110257.jpg?size=626&ext=jpg&ga=GA1.1.1244428762.1685267429&semt=ais");
+	background-size: cover;
 	-webkit-writing-mode: vertical-rl;
 	-ms-writing-mode: tb-rl;
 	writing-mode: vertical-rl;
-	height:40%;
+	height:50%;
 	width:100%;
+	
 }
 
 

@@ -1,9 +1,0 @@
-<th:block th:fragment="diaryButton(year, month, day, title)">
-    <form action="/diary/detail" method="get">
-        <input type="hidden" name="year" th:value="${year}">
-        <input type="hidden" name="month" th:value="${month}">
-        <input type="hidden" name="day" th:value="${day}">
-        <button th:if="${calendarMap.containsKey(title)}">投稿編集</button>
-        <button th:unless="${calendarMap.containsKey(title)}">新規作成</button>
-    </form>
-</th:block>

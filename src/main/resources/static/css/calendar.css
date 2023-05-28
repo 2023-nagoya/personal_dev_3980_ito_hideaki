@@ -1,7 +1,10 @@
+body{
+  background-image: url("https://img.freepik.com/free-vector/new-year-card-vector-template-decorated-with-abstract-watercolor-painting_8130-1462.jpg?w=740&t=st=1685267437~exp=1685268037~hmac=dd23a3b0296a1898c4296a11a4685f6adf1e1ba0d9907cf0dbf5d3b903e1d1f6");
+　background-size: cover;	
+}
 header{
 	height:20%;
 	width:100%;
-	background-color:#96514d;
 	text-align:center;
 }
 
@@ -23,6 +26,9 @@ table {
   border-collapse: collapse;
   font-family: serif;
   font-size: 14px;
+  background-image: url("https://img.freepik.com/free-photo/background-of-beige-watercolor-with-gray-stains-in-simple-style_53876-125324.jpg?size=626&ext=jpg&ga=GA1.1.1244428762.1685267429&semt=ais");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 /* セルのスタイル */

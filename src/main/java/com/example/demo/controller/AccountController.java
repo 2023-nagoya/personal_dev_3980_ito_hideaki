@@ -20,91 +20,127 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class AccountController {
 
-    @Autowired
-    HttpSession session;
+	@Autowired
+	HttpSession session;
 
-    @Autowired
-    Account account;
+	@Autowired
+	Account account;
 
-    @Autowired
-    AccountRepository accountRepository;
+	@Autowired
+	AccountRepository accountRepository;
 
-    //ログイン画面の表示
-    @GetMapping({ "/", "/login", "/logout" })
-    public String index(
-            @RequestParam(name = "error", defaultValue = "") String error,
-            Model model) {
-        //セッションをリセットする
-        session.invalidate();
-        //エラー処理を追加する。
-        if (error.equals("notLoggedIn")) {
-            model.addAttribute("errorMessage", "ログインしてください");
-        }
-        return "login";
-    }
+	//ログイン画面の表示
+	@GetMapping({ "/", "/login", "/logout" })
+	public String index() {
+		//セッションをリセットする
+		session.invalidate();
+		return "login";
+	}
 
-    //ログイン処理
-    @PostMapping("/login")
-    public String login(
-            @RequestParam(name = "email") String email,
-            @RequestParam(name = "password") String password,
-            Model model, RedirectAttributes redirectAttributes) {
-        //emailとpasswordに一致するデータを取得する
-        List<Users> userList = accountRepository.findByEmailAndPassword(email, password);
-        if(!userList.isEmpty()) {
-            Users user = userList.get(0);
-            account.setUser(user);
-            return "redirect:/calendar";
-        }else {
-            redirectAttributes.addFlashAttribute("error","メールアドレスとパスワードが一致しませんでした。");
-            return "redirect:/login";
-        }
+	//ログイン処理をする
+	@PostMapping("/login")
+	public String login(
+			@RequestParam(name = "email", defaultValue = "") String email,
+			@RequestParam(name = "password", defaultValue = "") String password,
+			Model model,
+			RedirectAttributes redirectAttributes) {
 
-    }
+		//emailとpasswordに一致するデータを取得する
+		List<Users> userList = accountRepository.findByEmailAndPassword(email, password);
 
-    //新規アカウントの作成画面への遷移
-    @GetMapping("/create/account")
-    public String create() {
-        return "createAccount";
-    }
+		//データベースに存在するかどうか判定
+		if (!userList.isEmpty()) {
+			Users user = userList.get(0);
+			account.setUser(user);
+			return "redirect:/calendar";
+		} else {
+			redirectAttributes.addFlashAttribute("error", "メールアドレスとパスワードが一致しませんでした。");
+			return "redirect:/login";
+		}
+	}
 
-    //データベースに値を保存する
-    @PostMapping("/create/account")
-    public String add(
-            @RequestParam(value = "name", defaultValue = "") String name,
-            @RequestParam(value = "email", defaultValue = "") String email,
-            @RequestParam(value = "password", defaultValue = "") String password,
-            @RequestParam(value = "confirm-password", defaultValue = "")String confirmPassword,
-            Model model) {
-            List<String> errorMessageList = new ArrayList<>();
-            if(name.length() == 0) {
-                errorMessageList.add("名前を入力してください");
-            }
-            if(email.length()==0) {
-                errorMessageList.add("メールアドレスを入力してください");
-            }
-            if(password.length() == 0) {
-                errorMessageList.add("パスワード入力してください");
-            }
-            if(password.length() < 8) {
-                errorMessageList.add("パスワードは8文字以上で入力してください");
-            }
-            if(!password.equals(confirmPassword)) {
-                errorMessageList.add("パスワードが一致しません");
-            }
-            if(errorMessageList.size() > 0) {
-                model.addAttribute("errorMessageList",errorMessageList);
-                return "createAccount";
-            }
-        //新規アカウントを作成
-        Users user = new Users(name, password, email);
-        accountRepository.save(user);
-        return "redirect:/login";
-    }
+	//新規アカウントの作成画面への遷移
+	@GetMapping("/create/account")
+	public String createAccount() {
+		return "createAccount";
+	}
 
-    //パスワードの再設定画面への遷移
-    @GetMapping("/passwordReset")
-    public String reset() {
-        return "passwordReset";
-    }
+	//アカウントを追加する
+	@PostMapping("/create/account")
+	public String addAccount(
+			@RequestParam(value = "name", defaultValue = "") String name,
+			@RequestParam(value = "email", defaultValue = "") String email,
+			@RequestParam(value = "password", defaultValue = "") String password,
+			@RequestParam(value = "confirm-password", defaultValue = "") String confirmPassword,
+			Model model) {
+		List<String> errorMessageList = new ArrayList<>();
+		if (name.length() == 0) {
+			errorMessageList.add("名前を入力してください");
+		}
+		if (email.length() == 0) {
+			errorMessageList.add("メールアドレスを入力してください");
+		}
+		if (password.length() == 0) {
+			errorMessageList.add("パスワード入力してください");
+		}
+		if (password.length() < 8) {
+			errorMessageList.add("パスワードは8文字以上で入力してください");
+		}
+		if (!password.equals(confirmPassword)) {
+			errorMessageList.add("パスワードが一致しません");
+		}
+		if (errorMessageList.size() > 0) {
+			model.addAttribute("errorMessageList", errorMessageList);
+			return "createAccount";
+		}
+		//新規アカウントを保存
+		Users user = new Users(name, password, email);
+		accountRepository.save(user);
+		return "redirect:/login";
+	}
+
+	//パスワード再設定画面を表示
+	@GetMapping("/passwordReset")
+	public String resetPassword() {
+		return "passwordReset";
+	}
+
+	//パスワードの再設定画面への遷移
+	@PostMapping("/passwordReset")
+	public String changePassword(
+			@RequestParam(value = "name", defaultValue = "") String name,
+			@RequestParam(value = "email", defaultValue = "") String email,
+			Model model, RedirectAttributes redirectAttributes) {
+
+		List<Users> user = accountRepository.findByNameAndEmail(name, email);
+		if (user.isEmpty()) {
+			redirectAttributes.addFlashAttribute("errorMessage", "アカウントが存在しないか、ユーザ名とメールアドレスが一致しませんでした");
+			return "redirect:/passwordReset";
+		} else {
+			Users users = user.get(0);
+			model.addAttribute("user", users);
+			return "newPassword";
+		}
+
+	}
+
+	//パスワードをデータベースの更新
+	@PostMapping("/setPassword")
+	public String setPassword(
+			@RequestParam(value = "id", defaultValue = "") Integer id,
+			@RequestParam(value = "name", defaultValue = "") String name,
+			@RequestParam(value = "email", defaultValue = "") String email,
+			@RequestParam(value = "password", defaultValue = "") String password,
+			RedirectAttributes redirectAttributes) {
+
+		//エラー文を追加する
+
+		//パスワード更新
+		Users user = new Users(id, name, password, email);
+		accountRepository.save(user);
+
+		redirectAttributes.addAttribute("passwordChanged", true);
+		return "redirect:/login";
+	}
+
 }

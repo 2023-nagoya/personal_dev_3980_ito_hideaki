@@ -32,8 +32,7 @@ public class Users {
 	public String getEmail() {
 		return email;
 	}
-	
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -53,6 +52,13 @@ public class Users {
 		this.name = name;
 		this.password = password;
 		this.email = email;
+	}
+
+	public Users(Integer id, String name, String password, String email) {
+		this.name = name;
+		this.password = password;
+		this.email = email;
+		this.id = id;
 	}
 
 }

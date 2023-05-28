@@ -12,25 +12,29 @@
 <body>
 	<header>
 		<h1>日記を残そう</h1>
-		<h3>By 伊藤　成昭</h3>
 	</header>
 	    <div>
 		    <span class="lang lang-jp">
 			<span th:if="${error}" th:text="${error}"></span>
+
+			<div th:if="${param.passwordChanged}">
+				<div class="alert alert-success">パスワードが正常に変更されました。</div>
+			</div>
+
 			           <form action="/login" method="post">
 				               Eメール<br>
-				               <input type="email" name="email"><br>
+				               <input type="email" name="email" class="input"><br>
 				               パスワード
 				               <a href="/passwordReset">パスワードを忘れた場合</a><br>
-				               <input type="password" name="password"><br>
+				               <input type="password" name="password" class="input"><br>
 				               <button class="btn btn-border">進む</button>
 				           </form><br>
 			               初めてのご利用ですか？<br>
 			               <a href="/create/account" class="create">アカウント作成</a>
-			       </span>
+			       
+		</span>
 
 		       <span class="lang lang-en" style="display: none;">
-			           <h2>Sign In</h2>
 			           <form action="/login" method="post" class="form">
 				               Email<br>
 				               <input type="email" name="email"><br>
@@ -43,28 +47,12 @@
 			               <a href="/create/account">Create an account</a>
 			       </span>
 
-
-		       <span class="lang lang-zh" style="display: none;">
-			           <h2>登录</h2>
-			           <form action="/login" method="post">
-				               电子邮件<br>
-				               <input type="email" name="email"><br>
-				               密码
-				               <a href="/passwordReset">忘记密码</a><br>
-				               <input type="password" name="password"><br>
-				               <button>登录</button>
-				           </form><br>
-			               初次使用吗？<br>
-			               <a href="/create/account">创建帐号</a>
-			       
-			       </span>
 		       <div>
 			           <select onchange="changeLanguage(this.value)">
 				               <option value="jp">日本語</option>
 				               <option value="en">English</option>
-				               <option value="zh">中文</option>
-				           </select>
-			       </div>
+			           </select>
+		       </div>
 
 
 

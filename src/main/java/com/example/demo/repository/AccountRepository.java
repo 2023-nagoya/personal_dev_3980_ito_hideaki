@@ -7,5 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entity.Users;
 
 public interface AccountRepository extends JpaRepository<Users, Integer> {
-	List<Users> findByEmailAndPassword(String email,String password);
+	List<Users> findByEmailAndPassword(String email, String password);
+
+	List<Users> findByNameAndEmail(String name, String Email);
 }

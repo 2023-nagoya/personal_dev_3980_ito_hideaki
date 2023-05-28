@@ -44,3 +44,17 @@ INSERT INTO holiday(name,now_date) VALUES('スポーツの日', '1009');
 INSERT INTO holiday(name,now_date) VALUES('文化の日', '1103');
 INSERT INTO holiday(name,now_date) VALUES('勤労感謝の日', '1123');
 
+
+-- 旧暦月データ
+INSERT INTO monthName(name,now_month) VALUES('睦月', '01');
+INSERT INTO monthName(name,now_month) VALUES('如月', '02');
+INSERT INTO monthName(name,now_month) VALUES('弥生', '03');
+INSERT INTO monthName(name,now_month) VALUES('卯月', '04');
+INSERT INTO monthName(name,now_month) VALUES('	皐月', '05');
+INSERT INTO monthName(name,now_month) VALUES('水無月', '06');
+INSERT INTO monthName(name,now_month) VALUES('文月', '07');
+INSERT INTO monthName(name,now_month) VALUES('葉月', '08');
+INSERT INTO monthName(name,now_month) VALUES('	長月', '09');
+INSERT INTO monthName(name,now_month) VALUES('神無月', '10');
+INSERT INTO monthName(name,now_month) VALUES('霜月', '11');
+INSERT INTO monthName(name,now_month) VALUES('	師走', '12');

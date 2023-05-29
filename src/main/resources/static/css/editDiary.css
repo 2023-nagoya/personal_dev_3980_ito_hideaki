@@ -3,8 +3,8 @@ body{
   writing-mode: vertical-rl;
   padding: 30px;
   font-family:serif; /* テキストのフォントを明朝体に設定 */
-   background-image: url("https://t4.ftcdn.net/jpg/05/30/07/85/240_F_530078511_ip4qrkfOSY9MaTHd5AvsITR1khBFtcVd.jpg");
-　background-size: cover;
+  background-image: url("https://thumb.photo-ac.com/56/568ae7fea6d913e7914f6646adf83999_t.jpeg");
+　background-size: cover;	
 }
 input{
 	line-height: 22px;

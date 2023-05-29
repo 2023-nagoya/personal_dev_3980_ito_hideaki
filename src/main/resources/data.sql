@@ -1,7 +1,11 @@
 -- ユーザーデータ
 INSERT INTO users(name, password, email) VALUES('鈴木一郎', 'himitu', 'abc@dfg');
 -- ダイアリーデータ
-INSERT INTO diaries(user_id, now_date, title, content,weather,favorite_flg) VALUES('1', '2023-05-17', 'セロ弾きのゴーシュ', 'ゴーシュはしボーなくと考えて君の工合がけろりと云いいてやって鼠の仲間をまたにゴーシュをしてお母さんからいて戻っましまし。','晴れ','true');
+INSERT INTO diaries(user_id, now_date, title, content,weather,favorite_flg) VALUES('1', '2023-05-17', '楽しい一日', '今日の天気は晴れでした。気分はとても嬉しいです。
+午前中は友達とカフェでおしゃべりを楽しみました。美味しいコーヒーを飲んでリラックスできました。
+午後は公園で散歩しました。新緑がとても美しくて、心が落ち着きました。
+夜は家で家族と一緒に夕食を楽しみました。おいしい料理と笑い声に包まれて幸せな時間を過ごしました。
+今日はとても充実した一日でした。明日も素敵な1日になりますように。','晴れ','true');
 INSERT INTO diaries(user_id, now_date, title, content,weather,favorite_flg) VALUES('2', '2023-05-18', 'sample', 'sample','曇り','false');
 INSERT INTO diaries(user_id, now_date, title, content,weather,favorite_flg) VALUES('3', '2023-05-19', 'sample', 'sample', '雨','false');
 -- 季語データ

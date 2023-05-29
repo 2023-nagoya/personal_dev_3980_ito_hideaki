@@ -1,8 +1,8 @@
     body{
 		 font-family: serif;
-  background-color: #f2f2f2;
-  background-image: url("https://thumb.photo-ac.com/56/568ae7fea6d913e7914f6646adf83999_t.jpeg");
-　background-size: cover;
+		  background-color: #f2f2f2;
+		  background-image: url("https://thumb.photo-ac.com/56/568ae7fea6d913e7914f6646adf83999_t.jpeg");
+		　background-size: cover;
 	}
      header {
             height: 20%;
@@ -18,8 +18,16 @@
             font-size: 45px;
         }
 		
+		
+		.content{
+		writing-mode: vertical-rl; /* 縦書きに設定 */
+ 		 text-orientation: upright; /* 縦書きテキストの方向を設定 */
+  		white-space: pre-wrap; /* 空白で改行させるための設定 */	
+		}
+		
 		.month{
 			text-align: center;
+			font-size:20px;
 		}
         /* テーブル全体のスタイル */
         table {

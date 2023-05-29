@@ -16,7 +16,7 @@
 	
 	<div>
 		<span class="lang lang-jp">
-			<ul th:if="${errorMessageList.size() > 0}" th:each="errorMessage:${errorMessageList}">
+			<ul th:if="${errorMessageList.size() > 0}" th:each="errorMessage:${errorMessageList}"　th:class="errorList">
 				<li>[[${errorMessage}]]</li>
 			</ul>
 

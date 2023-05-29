@@ -3,12 +3,23 @@ body {
   background-color: #f2f2f2;
   margin: 0;
   padding: 0;
-  background-image: url("https://img.freepik.com/free-vector/new-year-card-vector-template-decorated-with-abstract-watercolor-painting_8130-1462.jpg?w=740&t=st=1685267437~exp=1685268037~hmac=dd23a3b0296a1898c4296a11a4685f6adf1e1ba0d9907cf0dbf5d3b903e1d1f6");
+  background-image: url("https://thumb.photo-ac.com/56/568ae7fea6d913e7914f6646adf83999_t.jpeg");
 　background-size: cover;
 }
-}
 
-h3 {
+
+.errorList {
+		text-align: center;
+		color: red;
+		list-style-position: inside;
+		padding: 0;
+	}
+
+	.errorList li {
+		display: inline-block;
+	}
+
+h1 {
   text-align: center;
   margin-top: 20px;
 }

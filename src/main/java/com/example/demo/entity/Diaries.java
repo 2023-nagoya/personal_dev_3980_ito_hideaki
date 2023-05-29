@@ -24,19 +24,16 @@ public class Diaries {
 	private String title;
 	private String content;
 	private String weather;
-	@Column(name ="favorite_flg")
+	@Column(name = "favorite_flg")
 	private boolean favoriteFlg;
+
 	
-	public boolean isFavoriteFlg() {
-		return favoriteFlg;
-	}
-
-	public boolean geta() {
-		return favoriteFlg;
-	}
-
 	public Integer getId() {
 		return id;
+	}
+
+	public boolean getFavoriteFlg() {
+		return favoriteFlg;
 	}
 
 	public String getWeather() {
@@ -54,12 +51,19 @@ public class Diaries {
 	public String getContent() {
 		return content;
 	}
-
-	public Diaries() {
-
+	
+	public LocalDate getNowDate() {
+		return nowDate;
 	}
 
-	public Diaries(Integer userId,LocalDate nowDate, String title, String content,String weather,boolean favoriteFlg) {
+	public Diaries() {
+		
+	}
+
+	
+
+	public Diaries(Integer userId, LocalDate nowDate, String title, String content, String weather,
+			boolean favoriteFlg) {
 		this.nowDate = nowDate;
 		this.title = title;
 		this.content = content;
@@ -68,27 +72,22 @@ public class Diaries {
 		this.favoriteFlg = favoriteFlg;
 	}
 
-
 	public Diaries(Integer id, String title, String content) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
 	}
 
-	public Diaries(Integer id, Integer userId, LocalDate nowDate, String title, String content,String weather) {
-		// TODO 自動生成されたコンストラクター・スタブ
+	public Diaries(Integer id, Integer userId, LocalDate nowDate, String title, String content, String weather,boolean likeFlg) {
 		this.id = id;
 		this.userId = userId;
 		this.nowDate = nowDate;
 		this.title = title;
 		this.content = content;
 		this.weather = weather;
+		this.favoriteFlg = likeFlg;
 	}
 
-	public LocalDate getNowDate() {
-		// TODO 自動生成されたメソッド・スタブ
-		return nowDate;
-	}
-	
+
 
 }

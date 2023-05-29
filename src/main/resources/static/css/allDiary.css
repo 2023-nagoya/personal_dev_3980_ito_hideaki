@@ -1,49 +1,42 @@
-
-/* CSS code for allDiary.css */
-
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-     -ms-writing-mode: tb-rl;
-  writing-mode: vertical-rl;
-  padding: 30px;
+  margin: 0;
+  padding: 20px;
+  font-family: serif;
+  background-color: #f2f2f2;
+  background-image: url("https://thumb.photo-ac.com/56/568ae7fea6d913e7914f6646adf83999_t.jpeg");
+　background-size: cover;
 }
 
-h2 {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 10px;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-p {
-    color: #666;
-    font-size: 16px;
-    margin-bottom: 20px;
+th, td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ccc;
 }
 
-table.detail {
-    width: 100%;
-    border-collapse: collapse;
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
 }
 
-table.detail th,
-table.detail td {
-    padding: 8px;
-    text-align: left;
-    border: 1px solid #ccc;
+td a {
+  text-decoration: none;
+  color: #0000ff;
 }
 
-table.detail th {
-    background-color: #f2f2f2;
-    font-weight: bold;
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #f2f2f2;
+  border: none;
+  cursor: pointer;
 }
 
-table.detail tr:nth-child(even) {
-    background-color: #f9f9f9;
+button:hover {
+  background-color: #e0e0e0;
 }
-
-table.detail tr:hover {
-    background-color: #e6f7ff;
-}
-

@@ -2,8 +2,9 @@ body{
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
   padding: 30px;
-  font-family: "MS Mincho", serif; /* テキストのフォントを明朝体に設定 */
-			background-color: #f2ece6;
+  font-family:serif; /* テキストのフォントを明朝体に設定 */
+  background-image: url("https://thumb.photo-ac.com/56/568ae7fea6d913e7914f6646adf83999_t.jpeg");
+　background-size: cover;	
 }
 input{
 	line-height: 22px;

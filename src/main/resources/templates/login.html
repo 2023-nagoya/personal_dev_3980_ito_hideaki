@@ -21,13 +21,13 @@
 				<div class="alert alert-success">パスワードが正常に変更されました。</div>
 			</div>
 
-			           <form action="/login" method="post">
+			           <form action="/login" method="post" id="registration-form">
 				               Eメール<br>
 				               <input type="email" name="email" class="input"><br>
 				               パスワード
 				               <a href="/passwordReset">パスワードを忘れた場合</a><br>
 				               <input type="password" name="password" class="input"><br>
-				               <button class="btn btn-border">進む</button>
+				               <button class="btn btn-border btns" id="play-btn">進む</button>
 				           </form><br>
 			               初めてのご利用ですか？<br>
 			               <a href="/create/account" class="create">アカウント作成</a>
@@ -78,6 +78,23 @@
 				changeLanguage('jp');
 			});
 		</script>
+		<script>
+        // play button
+        const play_btn = document.querySelector('#play-btn');
+        const form = document.querySelector('#registration-form');
+        // audio file
+        let sound = new Audio("/sound.mp3");
+        // play event
+        play_btn.addEventListener('click', playSound);
+        function playSound(e) {
+            e.preventDefault(); // デフォルトのフォーム送信をキャンセル
+            sound.play();
+            setTimeout(() => {
+                form.submit(); // フォームを送信して画面を遷移させる
+            }, 250); // 音が再生されるまでの時間
+        }
+    </script>
+
 		   
 	</div>
 </body>

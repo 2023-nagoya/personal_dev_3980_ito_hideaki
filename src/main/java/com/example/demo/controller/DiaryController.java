@@ -63,8 +63,22 @@ public class DiaryController {
 			@RequestParam(value = "userId", defaultValue = "") Integer userId,
 			@RequestParam(value = "nowDate", defaultValue = "") LocalDate nowDate,
 			@RequestParam(value = "weather", defaultValue = "") String weather,
+			@RequestParam(required = false, name="check") String check,
 			Model model) {
-		Diaries editDiary = new Diaries(id, userId, nowDate, title, content, weather);
+		boolean likeFlg;
+		if (check != null) {
+			likeFlg = true;
+		} else {
+			likeFlg = false;
+		}
+		
+		Diaries editDiary = new Diaries(id, userId, nowDate, title, content, weather,likeFlg);
+		
+		List<Diaries> favoriteList = diaryRepository.findByNowDateAndUserId(nowDate, userId);
+		Diaries favorite = favoriteList.get(0);
+		model.addAttribute("favorite",favorite);
+		
+		
 		diaryRepository.save(editDiary);
 		return "redirect:/diary/detail?year=" + nowDate.getYear() + "&month=" + nowDate.getMonthValue() + "&day="
 				+ nowDate.getDayOfMonth();
@@ -77,7 +91,7 @@ public class DiaryController {
 			@RequestParam("year") Integer year,
 			@RequestParam("month") Integer month,
 			@RequestParam("day") Integer day,
-			@RequestParam("weather") String weather,
+			@RequestParam(value ="weather", defaultValue = "") String weather,
 			@RequestParam(required = false, name="check") String check,
 			Model model) {
 
@@ -87,6 +101,8 @@ public class DiaryController {
 		} else {
 			favoriteFlg = false;
 		}
+
+		
 		LocalDate date = LocalDate.of(year, month, day);
 		Diaries diary = new Diaries(account.getUser().getId(), date, title, content, weather, favoriteFlg);
 		diaryRepository.save(diary);

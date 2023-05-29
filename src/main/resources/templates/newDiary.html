@@ -6,47 +6,42 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="/css/newDiary.css">
 	<script>
-		function submitForm() {
+		function submitform() {
 			var title = document.getElementById('titleInput').innerText;
 			var content = document.getElementById('contentInput').innerText;
+			var weather = document.getElementById('weatherInput').innerText;
 			document.getElementById('titleHidden').value = title;
 			document.getElementById('contentHidden').value = content;
-			document.getElementById('editForm').submit();
+			document.getElementById('weatherHidden').value = weather;
+			document.getElementById('newDiary').submit();
 		}
 	</script>
 </head>
 
 <body>
-	<header>
-		新規登録
-		<a href="/logout">ログアウト</a>
-	</header>
-
 	[[${date}]]<br>
 	<h3>新規作成</h3>
-	<form th:action="@{/create/diary(year=${year},month=${month},day=${day})}" method="post">
+	<form th:action="@{/create/diary(year=${year},month=${month},day=${day})}" method="post" id="newDiary">
 		<input type="hidden" name="year" th:value=${year}>
 		<input type="hidden" name="month" th:value=${month}>
 		<input type="hidden" name="day" th:value=${day}>
 		タイトル<br>
-<!--		<div th:contenteditable="true" class="vertical-input" name="title" placeholder="タイトル">-->
-
-<!--			<p></p>-->
-<!--		</div>-->
-i	<input type = "text" name ="title">
+		<div th:contenteditable="true" class="vertical-input" name="title" id="titleInput" placeholder="タイトル"></div>
 		内容<br>
-<!--		<div contenteditable="true" class="vertical-textarea" name="content">-->
-
-<!--			<p></p>-->
-<!--		</div>-->
-	<input type = "text" name ="content">
+		<div th:contenteditable="true" class="vertical-textarea" name="content" id="contentInput" placeholder="本文">
+		</div>
 		本日の気候<br>
-		<input type="text" name="weather" placeholder="天気"><br>
+		<div th:contenteditable="true" class="vertical-input" name="weather" id="weatherInput" placeholder="本日の気候">
+		</div>
+
+		<input type="hidden" name="title" id="titleHidden">
+		<input type="hidden" name="content" id="contentHidden">
+		<input type="hidden" name="weather" id="weatherHidden">
 
 		<input type="checkbox" id="check" name="check">
 		<label for="okiniri">お気に入り</label><br>
 
-		<button>送信</button>
+		<button onclick="submitform()">送信</button>
 	</form>
 	<form action="/calendar">
 		<button>戻る</button>

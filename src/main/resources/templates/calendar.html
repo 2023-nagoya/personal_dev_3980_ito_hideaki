@@ -13,24 +13,24 @@
 	</header>
 	<div class="link">
 	<a href="/logout" class="logout">ログアウト</a>
-	<!--	日記知覧へ飛ぶ-->
-	<form action="all/diary" method="post">
+	<!--	日記一覧へ飛ぶ-->
+	<form action="all/diary" method="get">
 		<input type="hidden" name="year" th:value="${year}">
 		<input type="hidden" name="month" th:value="${month}">
 		<input type="hidden" name="day" th:value="${day}">
 		<button>日記一覧へ</button>
 	</form>
 	</div>
+	<div class="month">
 	<span class="today">[[${year}]]年[[${month}]]月</span>
-	
-	
-	<span th:with="hoge = ${decimalMonth}">
-		<span th:text="${monthMap.get(hoge)}"></span>
+	<span th:with="oldMonth = ${decimalMonth}">
+		<span th:text="${monthMap.get(oldMonth)}"></span>
 	</span>
+	</div>
 	
 	
-	<a th:href="@{/calendar(id=${(previd != null ? previd : 0) - 1})}">前の月</a>
-	<a th:href="@{/calendar(id=${(nextid != null ? nextid : 0) + 1})}">次の月</a>
+	<a th:href="@{/calendar(id=${(previd != null ? previd : 0) - 1})}" class="prevmonth">前の月</a>
+	<a th:href="@{/calendar(id=${(nextid != null ? nextid : 0) + 1})}" class="nextmonth">次の月</a>
 	<table border="1">
 		<tr>
 			<th>日</th>
@@ -45,7 +45,7 @@
 			<th:block th:each="day : ${week}">
 				<td>
 					<th:block th:if="${day !=null && day != ''}">
-						<span>[[${day}]]</span><br>
+						<span th:class="${#strings.contains(day, '土')} or ${#strings.contains(day, '日')} ? 'weekend'">[[${day}]]</span><br>
 						
 <!--					/日付が10日より小さいとき-->
 						<th:block th:if="${day} lt ${ten}"

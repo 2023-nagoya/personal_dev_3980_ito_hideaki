@@ -131,13 +131,32 @@ public class AccountController {
 			@RequestParam(value = "name", defaultValue = "") String name,
 			@RequestParam(value = "email", defaultValue = "") String email,
 			@RequestParam(value = "password", defaultValue = "") String password,
-			RedirectAttributes redirectAttributes) {
+			@RequestParam(value = "confirmpassword", defaultValue = "") String confirmpassword,
+			RedirectAttributes redirectAttributes, Model model) {
 
+		List<Users> user = accountRepository.findByNameAndEmail(name, email);
+		Users users = user.get(0); 
 		//エラー文を追加する
+		List<String> errorMessages = new ArrayList<>();
+		if (password.length() == 0) {
+			errorMessages.add("パスワードを入力してください");
+		}
+		if (password.length() < 8) {
+			errorMessages.add("パスワードは8文字以上で入力してください");
+		}
+		if (!password.equals(confirmpassword)) {
+			errorMessages.add("パスワードが一致しません");
+		}
+		if (errorMessages.size() > 0) {
+			//エラーメッセージは新しいパスワードを入力する画面で表示する
+			model.addAttribute("errorMessages", errorMessages);
+			model.addAttribute("user",users);
+			return "newPassword";
+		}
 
 		//パスワード更新
-		Users user = new Users(id, name, password, email);
-		accountRepository.save(user);
+		Users user2 = new Users(id, name, password, email);
+		accountRepository.save(user2);
 
 		redirectAttributes.addAttribute("passwordChanged", true);
 		return "redirect:/login";

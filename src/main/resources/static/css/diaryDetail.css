@@ -3,8 +3,8 @@ body{
   writing-mode: vertical-rl;
   padding: 30px;
   font-family: "MS Mincho", serif; /* テキストのフォントを明朝体に設定 */
-  background-image: url("https://img.freepik.com/free-photo/white-zen-sand-background-in-peace-concept_53876-126533.jpg?size=626&ext=jpg&ga=GA1.1.1244428762.1685267429&semt=ais");
-　background-size: cover;	
+  background-image: url("https://img.freepik.com/free-vector/new-year-card-vector-template-decorated-with-abstract-watercolor-painting_8130-1462.jpg?w=740&t=st=1685267437~exp=1685268037~hmac=dd23a3b0296a1898c4296a11a4685f6adf1e1ba0d9907cf0dbf5d3b903e1d1f6");
+　background-size: cover;		
 }
 h1 {
   font-size: 30px;
@@ -59,21 +59,21 @@ p:before{
       width: 75px;
       height: 70px;
       border-radius: 50% 70% 50% 80%;
-      background: #4d4c61;
+      background-image: url("https://beiz.jp/images_T/japanese-paper/japanese-paper_00181.jpg");
      font-family: serif;
     }
 .distorted-circle2 {
       width: 75px;
       height: 70px;
       border-radius: 50% 70% 50% 80%;
-      background: #465DAA;
+      background-image: url("https://beiz.jp/images_T/japanese-paper/japanese-paper_00181.jpg");
      font-family: serif;
     }
 .distorted-circle3 {
       width: 75px;
       height: 70px;
       border-radius: 50% 70% 50% 80%;
-      background: #664032;
+      background-image: url("https://beiz.jp/images_T/japanese-paper/japanese-paper_00181.jpg");
       font-family: serif;
     }
 .button{

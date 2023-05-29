@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Diaries;
@@ -50,13 +50,13 @@ public class CalendarController {
 		//カレンダーオブジェクトを生成し、現在の日付を設定
 		Calendar cal = Calendar.getInstance();
 		
-		//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		
 		int month = cal.get(Calendar.MONTH) + 1;
 
 		if (id != null) {
 			cal.set(month, id + 1);
 		}
-		//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		
 		//idがnullでない場合、idの値を月としてカレンダーオブジェクトに追加
 		if (id != null) {
 			cal.add(Calendar.MONTH, id);
@@ -154,19 +154,30 @@ public class CalendarController {
 		return "calendar";
 	}
 
-	@PostMapping("all/diary")
+	@GetMapping("all/diary")
 	public String allDiary(
-			@RequestParam("year") Integer year,
-			@RequestParam("month") Integer month,
-			@RequestParam("day") Integer day,
+			@RequestParam(name = "year",defaultValue="") Integer year,
+			@RequestParam(name = "month" ,defaultValue="") Integer month,
+			@RequestParam(name = "day" ,defaultValue="") Integer day,
+			@RequestParam(required = false, name = "favorite") String favorite,
 			Model model) {
 		Random rand = new Random();
 		Integer id = rand.nextInt(20) + 1;
 		Kigo kigo = kigoRepository.findAllById(id);
-
+		
 		Integer userId = account.getUser().getId();
-		List<Diaries> diaries = diaryRepository.findAllByUserId(userId);
-
+		List<Diaries> diaries = diaryRepository.findByUserId(userId);
+		
+		List<Diaries> favoriteList = new ArrayList<>();
+    	for (Diaries favoritediary : diaries) {
+            if (favoritediary.getFavoriteFlg()) {
+	                favoriteList.add(favoritediary);
+	            }
+	        }
+		System.out.println("@@@@@@@@000");
+		System.out.println(diaries.get(0).getFavoriteFlg());
+		System.err.println("@@@@@@@@@@@");
+    	model.addAttribute("favoriteList",favoriteList);
 		model.addAttribute("day", day);
 		model.addAttribute("year", year);
 		model.addAttribute("month", month);

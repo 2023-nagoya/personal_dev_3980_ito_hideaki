@@ -20,24 +20,25 @@
 	<form th:action="'/diary/'+${diary.id}+'/edit'" method="post" id="editForm">
 		タイトル<br>
 		<div th:contenteditable="true" class="vertical-input" name="title" th:value="${diary.title}" id="titleInput">
-			
 			<p th:text="${diary.title}"></p>
 		</div>
 		内容<br>
-		<div contenteditable="true" class="vertical-textarea" name="content" th:value="${diary.content}" id="contentInput">
-			
+		<div contenteditable="true" class="vertical-textarea" name="content" th:value="${diary.content}"
+			id="contentInput">
 			<p th:text="${diary.content}"></p>
 		</div>
-
+		<input type="checkbox" id="check" name="check" th:checked="${favorite}">
+		<label for="okiniri">お気に入り</label><br>
 
 		<input type="hidden" name="nowDate" th:value="${diary.nowDate}">
 		<input type="hidden" name="userId" th:value="${diary.userId}">
+		
 		<input type="hidden" name="title" id="titleHidden">
 		<input type="hidden" name="content" id="contentHidden">
+		<input type="hidden" name="weather" th:value="${diary.weather}">
+
+
 		<button type="button" onclick="submitForm()">更新</button>
-	</form>
-	<form action="diary/detail" method="post" id="editForm">
-		<button>戻る</button>
 	</form>
 </body>
 

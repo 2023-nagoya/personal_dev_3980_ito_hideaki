@@ -7,16 +7,57 @@ body {
 　background-size: cover;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+.seasonalWord{
+	font-size:30px;
+	text-align:center;
+	
+}
+.display{
+	font-size:20px;
 }
 
+.allDiary{
+	margin-top:50px;
+	text-align:center;
+}
+
+.allHeadline{
+	font-size:20px;
+	
+}
+
+.favoriteDiary{
+	margin-top:50px;
+	text-align:center;
+}
+
+.favoriteHeadline{
+	font-size:20px;
+	
+}
+
+ table {
+	width: 80%;
+	margin: 0 auto;
+	border-collapse: collapse;
+	font-family: serif;
+	font-size: 14px;
+	background-image: url("https://img.freepik.com/free-photo/background-of-beige-watercolor-with-gray-stains-in-simple-style_53876-125324.jpg?size=626&ext=jpg&ga=GA1.1.1244428762.1685267429&semt=ais");
+	background-size: cover;
+	background-repeat: no-repeat;
+	table-layout: fixed;
+	word-wrap: break-word;
+        }
+
 th, td {
-  padding: 10px;
-  text-align: left;
-  border: 1px solid #ccc;
+ width: 50px;
+height: 15px;
+padding: 5px;
+text-align: center;
+border: 1px solid #ccc;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 }
 
 th {
@@ -29,14 +70,6 @@ td a {
   color: #0000ff;
 }
 
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #f2f2f2;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #e0e0e0;
-}
+.returnCalendar {
+	margin-top:50px;
+	text-align: center;}

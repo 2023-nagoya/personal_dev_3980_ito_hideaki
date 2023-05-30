@@ -61,6 +61,7 @@ p:before{
       border-radius: 50% 70% 50% 80%;
       background-image: url("https://beiz.jp/images_T/japanese-paper/japanese-paper_00181.jpg");
      font-family: serif;
+     margin-top: auto;
     }
 .distorted-circle2 {
       width: 75px;
@@ -68,6 +69,7 @@ p:before{
       border-radius: 50% 70% 50% 80%;
       background-image: url("https://beiz.jp/images_T/japanese-paper/japanese-paper_00181.jpg");
      font-family: serif;
+     
     }
 .distorted-circle3 {
       width: 75px;
@@ -75,16 +77,11 @@ p:before{
       border-radius: 50% 70% 50% 80%;
       background-image: url("https://beiz.jp/images_T/japanese-paper/japanese-paper_00181.jpg");
       font-family: serif;
+      
     }
 .button{
-	display: flex;
-	justify-content: center;
-	text-align: center;
-			margin-top: 30px;
-			position: fixed;
-			bottom: 20px;
-			left: 50%;
-			transform: translateX(-50%);
+	margin:auto;
+	display:flex;
 	
 	
 }

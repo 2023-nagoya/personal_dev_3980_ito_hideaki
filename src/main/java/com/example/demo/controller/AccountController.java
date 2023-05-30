@@ -74,6 +74,11 @@ public class AccountController {
 			@RequestParam(value = "confirm-password", defaultValue = "") String confirmPassword,
 			Model model) {
 		List<String> errorMessageList = new ArrayList<>();
+		List<Users> emailCheck = accountRepository.findByEmail(email);
+		
+		if(!emailCheck.isEmpty()) {
+			errorMessageList.add("このメールアドレスは既に存在しています");
+		}
 		if (name.length() == 0) {
 			errorMessageList.add("名前を入力してください");
 		}

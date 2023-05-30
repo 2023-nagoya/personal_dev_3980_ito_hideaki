@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>日記一覧</title>
-<link rel="stylesheet" href="/css/allDiary.css">
+	<meta charset="UTF-8">
+	<title>日記一覧</title>
+	<link rel="stylesheet" href="/css/allDiary.css">
 </head>
+
 <body>
-	<div>
-	<span>本日の季語<br></span>
-	<span>[[${kigo.name}]]:[[${kigo.meaning}]]</span>
+	<div class="seasonalWord">
+		<span>本日の大和言葉<br></span>
+		<span class="display">[[${kigo.name}]]:[[${kigo.meaning}]]</span>
+	</div>
+	<div class="allDiary">
+		<span class="allHeadline">全ての日記</span>
+		<table class="detail">
+			<tr>
+				<th>日付</th>
+				<th>気候</th>
+				<th>タイトル</th>
+			</tr>
+			<tr th:each="diary:${diaries}">
+				<td th:text="${diary.nowDate}"></td>
+				<td th:text="${diary.weather}"></td>
+				<td><a th:href="'/diary/'+${diary.id}+'/edit'">[[${diary.title}]]</a></td>
+			</tr>
+		</table>
+	</div>
+	<div class="favoriteDiary">
+		<span class="favoriteHeadline">お気に入りの日記</span>
+		<table class="detail">
+			<tr>
+				<th>日付</th>
+				<th>タイトル</th>
+				<th>内容</th>
+			</tr>
+			</tr>
+			<tr th:each="favorite : ${favoriteList}">
+				<td><span th:text="${favorite.nowDate}"></span></td>
+				<td><a th:href="'/diary/'+${favorite.id}+'/edit'">[[${favorite.title}]]</span></td>
+				<td><span th:text="${favorite.content}"></span></td>
+			</tr>
+		</table>
+	</div>
+	<div class="returnCalendar">
+		<a href="/calendar">カレンダーに戻る</a>
 	</div>
 	
-	
-    <table class="detail">
-		<tr>
-			<th>日付</th>
-			<th>気候</th>
-			<th>タイトル</th>
-		</tr>
-		<tr th:each="diary:${diaries}">
-			<td th:text="${diary.nowDate}"></td>
-			<td th:text="${diary.weather}"></td>
-			<td><a th:href ="'/diary/'+${diary.id}+'/edit'">[[${diary.title}]]</a></td> 
-		</tr>
-	</table>
-	 
-	<form action="/calendar">
-		<button>戻る</button>
-	</form>
-	
-	
-	<span>お気に入りの日記</span>
-	 <table class="detail">
-		<tr>
-			<th>日付</th>
-			<th>気候</th>
-			<th>タイトル</th>
-		</tr>
-		</tr>
-                <tr th:each="favorite : ${favoriteList}">
-                <td><span th:text="${favorite.nowDate}"></span></td>
-                <td><span th:text="${favorite.title}"></span></td>
-                <td><span th:text="${favorite.content}"></span></td>
-            </tr>
-	</table>
 </body>
+
 </html>

@@ -174,9 +174,7 @@ public class CalendarController {
 	                favoriteList.add(favoritediary);
 	            }
 	        }
-		System.out.println("@@@@@@@@000");
-		System.out.println(diaries.get(0).getFavoriteFlg());
-		System.err.println("@@@@@@@@@@@");
+		
     	model.addAttribute("favoriteList",favoriteList);
 		model.addAttribute("day", day);
 		model.addAttribute("year", year);

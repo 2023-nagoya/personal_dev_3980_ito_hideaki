@@ -18,7 +18,7 @@ input{
 	font-size:120%;
 }
 textarea {
-font-size: 100%;
+font-size: 140%;
 line-height: 20px;
   background: linear-gradient(to bottom, #eee 1px, white 1px);
   background-size: 100% 20px;
@@ -58,4 +58,13 @@ line-height: 20px;
   border: none;
   width	: 800px;
    text-orientation: upright;
+}
+
+button{
+	      width: 75px;
+      height: 70px;
+      border-radius: 50% 70% 50% 80%;
+      background-image: url("https://beiz.jp/images_T/japanese-paper/japanese-paper_00181.jpg");
+     font-family: serif;
+     margin-top: auto;
 }

@@ -1,4 +1,5 @@
--<!DOCTYPE html>
+-
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
@@ -12,25 +13,28 @@
 		<h1>[[${@account.user.name}]]さんの日記</h1>
 	</header>
 	<div class="link">
-	<a href="/logout" class="logout">ログアウト</a>
-	<!--	日記一覧へ飛ぶ-->
-	<form action="all/diary" method="get">
-		<input type="hidden" name="year" th:value="${year}">
-		<input type="hidden" name="month" th:value="${month}">
-		<input type="hidden" name="day" th:value="${day}">
-		<button>日記一覧へ</button>
-	</form>
+		<a href="/logout" class="logout">ログアウト</a>
 	</div>
+	<div class="allDiary">
+		<form action="all/diary" method="get">
+			<input type="hidden" name="year" th:value="${year}">
+			<input type="hidden" name="month" th:value="${month}">
+			<input type="hidden" name="day" th:value="${day}">
+			<button class="button-link">日記一覧へ</button>
+		</form>
+	
+	
 	<div class="month">
-	<span class="today">[[${year}]]年[[${month}]]月</span>
-	<span th:with="oldMonth = ${decimalMonth}">
-		<span th:text="${monthMap.get(oldMonth)}"></span>
-	</span>
+		<span class="today">[[${year}]]年[[${month}]]月</span>
+		<span th:with="oldMonth = ${decimalMonth}">
+			<span th:text="${monthMap.get(oldMonth)}"></span>
+		</span>
 	</div>
-	
-	
-	<a th:href="@{/calendar(id=${(previd != null ? previd : 0) - 1})}" class="prevmonth">前の月</a>
-	<a th:href="@{/calendar(id=${(nextid != null ? nextid : 0) + 1})}" class="nextmonth">次の月</a>
+
+	<div class="moonTransition">
+		<a th:href="@{/calendar(id=${(previd != null ? previd : 0) - 1})}" class="prevmonth">前の月</a>
+		<a th:href="@{/calendar(id=${(nextid != null ? nextid : 0) + 1})}" class="nextmonth">次の月</a>
+	</div>
 	<table border="1">
 		<tr>
 			<th>日</th>
@@ -45,12 +49,13 @@
 			<th:block th:each="day : ${week}">
 				<td>
 					<th:block th:if="${day !=null && day != ''}">
-						<span th:class="${#strings.contains(day, '土')} or ${#strings.contains(day, '日')} ? 'weekend'">[[${day}]]</span><br>
-						
-<!--					/日付が10日より小さいとき-->
+						<span
+							th:class="${#strings.contains(day, '土')} or ${#strings.contains(day, '日')} ? 'weekend'">[[${day}]]</span><br>
+
+						<!--					/日付が10日より小さいとき-->
 						<th:block th:if="${day} lt ${ten}"
 							th:with="holiday=${decimalMonth}+'0'+${day},title=${year}+ '-'+${decimalMonth}+'-0'+${day}">
-							<span th:text="${holidayMap.get(holiday)}"　style="color: blue"></span>
+							<span th:text="${holidayMap.get(holiday)}" 　style="color: blue"></span>
 							<span th:text="${calendarMap.get(title)}"></span>
 							<th:block th:if="${calendarMap.containsKey(title)}">
 								<form action="/diary/detail" method="get">
@@ -69,11 +74,11 @@
 								</form>
 							</th:block>
 						</th:block>
-			
-<!--						日付が10以上のとき-->
+
+						<!--						日付が10以上のとき-->
 						<th:block th:unless="${day} lt ${ten}"
 							th:with="holiday=${decimalMonth}+''+${day} ,title=${year}+ '-'+${decimalMonth}+'-'+${day}">
-							<span th:text="${holidayMap.get(holiday)}"　style="color: blue"></span>
+							<span th:text="${holidayMap.get(holiday)}" 　style="color: blue"></span>
 							<span th:text="${calendarMap.get(title)}"></span>
 							<th:block th:if="${calendarMap.containsKey(title)}">
 								<form action="/diary/detail" method="get">
@@ -92,8 +97,8 @@
 								</form>
 							</th:block>
 						</th:block>
-			
-			
+
+
 					</th:block>
 				</td>
 			</th:block>

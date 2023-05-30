@@ -19,19 +19,19 @@
 </head>
 
 <body>
-	[[${date}]]<br>
 	<h3>新規作成</h3>
+	<span class="date">[[${year}]]年[[${month}]]月[[${day}]]日<br></span>
 	<form th:action="@{/create/diary(year=${year},month=${month},day=${day})}" method="post" id="newDiary">
 		<input type="hidden" name="year" th:value=${year}>
 		<input type="hidden" name="month" th:value=${month}>
 		<input type="hidden" name="day" th:value=${day}>
 		タイトル<br>
-		<div th:contenteditable="true" class="vertical-input" name="title" id="titleInput" placeholder="タイトル"></div>
+		<div th:contenteditable="true" class="vertical-input" name="title" id="titleInput" placeholder="タイトル" required></div>
 		内容<br>
-		<div th:contenteditable="true" class="vertical-textarea" name="content" id="contentInput" placeholder="本文">
+		<div th:contenteditable="true" class="vertical-textarea" name="content" id="contentInput" placeholder="本文" required>
 		</div>
 		本日の気候<br>
-		<div th:contenteditable="true" class="vertical-input" name="weather" id="weatherInput" placeholder="本日の気候">
+		<div th:contenteditable="true" class="vertical-input" name="weather" id="weatherInput" placeholder="本日の気候" required>
 		</div>
 
 		<input type="hidden" name="title" id="titleHidden">
@@ -40,12 +40,11 @@
 
 		<input type="checkbox" id="check" name="check">
 		<label for="okiniri">お気に入り</label><br>
-
+	
+		<a href="/calendar">カレンダーに戻る</a>
 		<button onclick="submitform()">送信</button>
 	</form>
-	<form action="/calendar">
-		<button>戻る</button>
-	</form>
+	
 </body>
 
 </html>
